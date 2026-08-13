@@ -5,11 +5,123 @@ const headers = {
   "content-type": "application/json; charset=utf-8",
 };
 
+const siteId = "lets-bean-coffee";
+const tableName = process.env.SUPABASE_CMS_TABLE || "site_content";
+const bucketName = process.env.SUPABASE_STORAGE_BUCKET || "cms-uploads";
+
+function hasSupabaseConfig() {
+  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
+function supabaseUrl(path) {
+  return `${process.env.SUPABASE_URL.replace(/\/$/, "")}${path}`;
+}
+
+function supabaseHeaders(extra = {}) {
+  return {
+    apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+    ...extra,
+  };
+}
+
+async function getSupabaseContent() {
+  const response = await fetch(
+    supabaseUrl(`/rest/v1/${tableName}?id=eq.${encodeURIComponent(siteId)}&select=content&limit=1`),
+    {
+      headers: supabaseHeaders({ accept: "application/json" }),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Supabase read failed: ${response.status}`);
+  }
+
+  const rows = await response.json();
+  return rows?.[0]?.content || null;
+}
+
+async function saveSupabaseContent(content) {
+  const response = await fetch(supabaseUrl(`/rest/v1/${tableName}`), {
+    method: "POST",
+    headers: supabaseHeaders({
+      "content-type": "application/json",
+      prefer: "resolution=merge-duplicates",
+    }),
+    body: JSON.stringify({
+      id: siteId,
+      content,
+      updated_at: new Date().toISOString(),
+    }),
+  });
+
+  if (!response.ok) {
+    const message = await response.text().catch(() => "");
+    throw new Error(`Supabase save failed: ${response.status} ${message}`);
+  }
+}
+
+async function uploadSupabasePhoto(payload) {
+  if (!payload.dataUrl || typeof payload.dataUrl !== "string") {
+    throw new Error("Missing photo data");
+  }
+
+  const match = payload.dataUrl.match(/^data:(.+);base64,(.+)$/);
+  if (!match) {
+    throw new Error("Invalid photo data");
+  }
+
+  const contentType = payload.contentType || match[1] || "image/webp";
+  const extension = contentType.includes("png")
+    ? "png"
+    : contentType.includes("jpeg") || contentType.includes("jpg")
+      ? "jpg"
+      : "webp";
+  const safeName = String(payload.fileName || "photo")
+    .toLowerCase()
+    .replace(/\.[a-z0-9]+$/i, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 54) || "photo";
+  const objectPath = `${siteId}/${Date.now()}-${safeName}.${extension}`;
+  const binary = Buffer.from(match[2], "base64");
+
+  const uploadResponse = await fetch(
+    supabaseUrl(`/storage/v1/object/${bucketName}/${objectPath}`),
+    {
+      method: "POST",
+      headers: supabaseHeaders({
+        "cache-control": "31536000",
+        "content-type": contentType,
+        "x-upsert": "true",
+      }),
+      body: binary,
+    },
+  );
+
+  if (!uploadResponse.ok) {
+    const message = await uploadResponse.text().catch(() => "");
+    throw new Error(`Supabase upload failed: ${uploadResponse.status} ${message}`);
+  }
+
+  return {
+    url: supabaseUrl(`/storage/v1/object/public/${bucketName}/${objectPath}`),
+    path: objectPath,
+  };
+}
+
 exports.handler = async (event) => {
   const store = getStore("lets-bean-cms");
 
   if (event.httpMethod === "GET") {
-    const content = await store.get("content", { type: "json" });
+    let content = null;
+
+    if (hasSupabaseConfig()) {
+      content = await getSupabaseContent();
+    } else {
+      content = await store.get("content", { type: "json" });
+    }
+
     return {
       statusCode: 200,
       headers,
@@ -38,6 +150,24 @@ exports.handler = async (event) => {
   }
 
   const payload = JSON.parse(event.body || "{}");
+
+  if (payload.action === "upload") {
+    if (!hasSupabaseConfig()) {
+      return {
+        statusCode: 501,
+        headers,
+        body: JSON.stringify({ error: "Supabase photo storage is not configured yet" }),
+      };
+    }
+
+    const upload = await uploadSupabasePhoto(payload);
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ ok: true, ...upload }),
+    };
+  }
+
   if (!payload.content || typeof payload.content !== "object") {
     return {
       statusCode: 400,
@@ -46,7 +176,11 @@ exports.handler = async (event) => {
     };
   }
 
-  await store.setJSON("content", payload.content);
+  if (hasSupabaseConfig()) {
+    await saveSupabaseContent(payload.content);
+  } else {
+    await store.setJSON("content", payload.content);
+  }
 
   return {
     statusCode: 200,

@@ -5,7 +5,7 @@ import Home from "../app/page";
 import "../app/globals.css";
 
 function NetlifyApp() {
-  if (window.location.pathname === "/cms") {
+  if (window.location.pathname.endsWith("/cms")) {
     return <CmsPage />;
   }
 

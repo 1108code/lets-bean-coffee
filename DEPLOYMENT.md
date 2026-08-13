@@ -11,7 +11,7 @@ This project is prepared for GitHub + Netlify deployment with a shared CMS.
 - Netlify build command: `npm run build:netlify`
 - Netlify publish directory: `netlify-dist`
 
-The CMS saves published content to Netlify Blobs through a Netlify Function. That means edits and uploaded photos can appear on desktop, tablet, and mobile after publishing.
+The CMS saves published content and uploaded photos to Supabase through a Netlify Function. Netlify only hosts the website and API function, so CMS storage does not consume Netlify Blobs.
 
 ## Local Preview
 
@@ -99,10 +99,14 @@ Node version: 22
 
 The included `netlify.toml` already contains those settings.
 
-7. Add this environment variable in Netlify before or after the first deploy:
+7. Add these environment variables in Netlify before or after the first deploy:
 
 ```text
 CMS_PASSWORD=choose-a-private-password
+SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+SUPABASE_CMS_TABLE=site_content
+SUPABASE_STORAGE_BUCKET=cms-uploads
 ```
 
 Use a password the client can keep private. They will enter this on `/cms` before clicking Publish.
@@ -136,6 +140,32 @@ Photo upload test:
 
 Uploaded photos are compressed in the browser before saving, which helps keep the CMS friendly for free hosting. Still, avoid uploading very large galleries. Two rotating photos per category and a few review photos is the right amount for this site.
 
+## Supabase Setup
+
+1. Go to Supabase and create a new project.
+2. Open SQL Editor.
+3. Open this project file:
+
+```text
+supabase-setup.sql
+```
+
+4. Copy the whole SQL file and run it in Supabase.
+5. Go to Project Settings, then API.
+6. Copy the Project URL into Netlify as:
+
+```text
+SUPABASE_URL
+```
+
+7. Copy the `service_role` key into Netlify as:
+
+```text
+SUPABASE_SERVICE_ROLE_KEY
+```
+
+Keep the service role key private. Do not put it in frontend code, GitHub Pages, screenshots, or client-facing instructions.
+
 ## Editable In CMS
 
 - Hero text
@@ -162,5 +192,6 @@ Uploaded photos are compressed in the browser before saving, which helps keep th
 
 - Do not share the CMS password publicly.
 - If `CMS_PASSWORD` is missing in Netlify, the CMS can still publish, but it is not protected.
+- If Supabase environment variables are missing, the CMS falls back to Netlify Blobs for content and photo uploads will save only in browser preview.
 - If you change `CMS_PASSWORD`, redeploy or let Netlify refresh the function environment.
 - The CMS does not create a full e-commerce checkout. It updates website content and photos only.

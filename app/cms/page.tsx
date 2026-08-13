@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { assetPath } from "../asset-path";
 
 type MenuItem = {
   title: string;
@@ -44,6 +45,8 @@ type CmsContent = {
   footerLine: string;
   copyright: string;
   email: string;
+  mobileNumber: string;
+  landline: string;
   address: string;
   weekdayLabel: string;
   weekdayHours: string;
@@ -64,22 +67,22 @@ const cmsPasswordKey = "lets-bean-cms-password";
 const cmsApiPath = "/.netlify/functions/cms";
 
 const defaultContent: CmsContent = {
-  heroTitle: "AUTHENTIC POURS.",
-  heroAccent: "UNFILTERED VIBES.",
+  heroTitle: "Authentic pours.",
+  heroAccent: "Unfiltered vibes.",
   heroCopy:
     "A cozy space for good coffee, great conversations, and meaningful moments.",
   menuEyebrow: "OUR MENU",
-  menuHeading: "SOMETHING FOR EVERY CRAVING",
+  menuHeading: "Something for Every Craving",
   menuNote: "Full menu available soon. Message us for today's selections.",
   menuCta: "ASK FOR TODAY'S MENU",
   aboutEyebrow: "ABOUT LET'S BEAN COFFEE",
-  aboutHeading: "MORE THAN JUST COFFEE",
+  aboutHeading: "More Than Just Coffee",
   aboutCopy:
     "We're here to serve quality brews, delicious bites, and a space where you can relax, focus, and connect. Thank you for being part of our journey.",
   aboutImage: "/photos/about-drink-feature.png",
   privateImage: "/photos/private-room-storefront.png",
   privateEyebrow: "PRIVATE ROOM RENTAL",
-  privateHeading: "A QUIET SPACE FOR YOUR MOMENTS",
+  privateHeading: "A Quiet Space for Your Moments",
   privateCopy:
     "Reserve a comfortable private room for meetings, study sessions, small gatherings, and private conversations.",
   privateLabelTitle: "PRIVATE ROOM RENTAL",
@@ -87,18 +90,20 @@ const defaultContent: CmsContent = {
   privatePrimaryCta: "INQUIRE NOW",
   privateSecondaryCta: "MESSAGE US",
   reviewsEyebrow: "CUSTOMER REVIEWS",
-  reviewsHeading: "KIND WORDS FROM OUR GUESTS",
+  reviewsHeading: "CUSTOMER REVIEWS COMING SOON",
   reviewsCopy:
-    "We are preparing a space for real customer notes and shared moments. Visit our social pages to see the latest posts and leave your own Let's Bean Coffee experience.",
+    "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
-  orderHeading: "LET US PREPARE SOMETHING FOR YOU",
-  paymentIntro: "BPI or BDO Bank Transfer",
+  orderHeading: "Let Us Prepare Something for You",
+  paymentIntro: "Accepted Payments: Cash · Bank Transfer · E-wallets",
   footerLine: "Authentic Pours. Unfiltered Vibes.",
   copyright: "© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
   email: "letsbean.cafe@gmail.com",
+  mobileNumber: "09568167071",
+  landline: "(049) 536-2552",
   address:
-    "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Banos, Philippines",
+    "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Laguna, Philippines",
   weekdayLabel: "Monday-Friday",
   weekdayHours: "10:00 AM - 10:00 PM",
   weekendLabel: "Saturday-Sunday",
@@ -117,18 +122,18 @@ const defaultContent: CmsContent = {
   ],
   reviews: [
     {
-      title: "Cozy Moments",
-      body: "Customer stories and cafe moments can be featured here once available.",
+      title: "Reviews Unavailable",
+      body: "Real customer reviews will appear here once added through the CMS.",
       image: "/photos/review-sample-cozy.webp",
     },
     {
-      title: "Favorite Orders",
-      body: "Highlight real drink, pastry, meal, and snack feedback from guests.",
+      title: "Photos Unavailable",
+      body: "Guest photos and featured cafe moments can be uploaded here later.",
       image: "/photos/review-sample-orders.webp",
     },
     {
-      title: "Private Room Notes",
-      body: "Share real impressions from meetings, study sessions, and small gatherings.",
+      title: "Awaiting Client Update",
+      body: "This card is ready for a real review, quote, or private room note.",
       image: "/photos/review-sample-private-room.webp",
     },
   ],
@@ -312,6 +317,31 @@ export default function CmsPage() {
     });
   }
 
+  async function uploadPhotoOnline(file: File, imageData: string) {
+    const response = await fetch(cmsApiPath, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-cms-password": cmsPassword,
+      },
+      body: JSON.stringify({
+        action: "upload",
+        contentType: "image/webp",
+        dataUrl: imageData,
+        fileName: file.name,
+      }),
+    });
+
+    if (!response.ok) {
+      const data = (await response.json().catch(() => ({}))) as { error?: string };
+      throw new Error(data.error || "Photo upload failed");
+    }
+
+    const data = (await response.json()) as { url?: string };
+    if (!data.url) throw new Error("Photo upload did not return a URL");
+    return data.url;
+  }
+
   async function handleUpload(file: File | undefined, onReady: (imageData: string) => void) {
     if (!file) return;
     if (!file.type.startsWith("image/")) {
@@ -323,8 +353,15 @@ export default function CmsPage() {
     setCopyStatus("Optimizing photo...");
     try {
       const imageData = await readPhoto(file);
-      onReady(imageData);
-      setCopyStatus("Photo added");
+      try {
+        setCopyStatus("Uploading photo...");
+        const photoUrl = await uploadPhotoOnline(file, imageData);
+        onReady(photoUrl);
+        setCopyStatus("Photo uploaded");
+      } catch {
+        onReady(imageData);
+        setCopyStatus("Photo added locally");
+      }
     } catch {
       setCopyStatus("Photo failed");
     }
@@ -360,7 +397,7 @@ export default function CmsPage() {
     <main className="cms-shell">
       <aside className="cms-sidebar">
         <a className="cms-logo" href="/">
-          <img src="/lets-bean-logo-light.png" alt="Let's Bean Coffee logo" />
+          <img src={assetPath("/lets-bean-logo-light.png")} alt="Let's Bean Coffee logo" />
           <span>Content Studio</span>
         </a>
         <nav className="cms-tabs" aria-label="CMS sections">
@@ -523,8 +560,8 @@ export default function CmsPage() {
               {content.menu.map((item, index) => (
                 <article className="cms-list-item" key={`${item.title}-${index}`}>
                   <div className="cms-dual-preview" aria-label={`${item.title} photo preview`}>
-                    <img src={item.image} alt="" />
-                    <img src={item.imageAlt || item.image} alt="" />
+                    <img src={assetPath(item.image)} alt="" />
+                    <img src={assetPath(item.imageAlt || item.image)} alt="" />
                   </div>
                   <label>
                     Category name
@@ -615,7 +652,7 @@ export default function CmsPage() {
               {content.reviews.map((item, index) => (
                 <article className="cms-list-item compact" key={`${item.title}-${index}`}>
                   <div className="cms-review-preview">
-                    <img src={item.image || "/photos/review-sample-cozy.webp"} alt="" />
+                    <img src={assetPath(item.image || "/photos/review-sample-cozy.webp")} alt="" />
                   </div>
                   <label>
                     Review title
@@ -689,6 +726,8 @@ export default function CmsPage() {
             <div className="cms-form-grid">
               {[
                 ["Email", "email"],
+                ["Mobile number", "mobileNumber"],
+                ["Landline", "landline"],
                 ["Address", "address"],
                 ["Weekday label", "weekdayLabel"],
                 ["Weekday hours", "weekdayHours"],

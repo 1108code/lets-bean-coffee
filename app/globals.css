@@ -95,11 +95,18 @@ img {
 }
 
 .order-button {
+  align-items: center;
   border: 1px solid rgba(255, 247, 235, 0.58);
   border-radius: 5px;
+  display: inline-flex;
+  gap: 9px;
   justify-self: end;
+  justify-content: center;
+  line-height: 1;
+  min-height: 52px;
   padding: 17px 22px;
   transition: background 180ms ease, transform 180ms ease;
+  white-space: nowrap;
 }
 
 .order-button:hover,
@@ -114,7 +121,9 @@ img {
 }
 
 .hero {
-  background-image: linear-gradient(90deg, rgba(18, 9, 4, 0.94) 0%, rgba(18, 9, 4, 0.74) 38%, rgba(18, 9, 4, 0.08) 78%), url("/photos/hero-lets-bean-generated.png");
+  background-image:
+    linear-gradient(90deg, rgba(18, 9, 4, 0.93) 0%, rgba(18, 9, 4, 0.78) 37%, rgba(18, 9, 4, 0.32) 72%, rgba(18, 9, 4, 0.14) 100%),
+    url("/photos/hero-real-cafe-final.png");
   background-position: center center;
   background-size: cover;
   min-height: 670px;
@@ -123,7 +132,9 @@ img {
 }
 
 .hero-shade {
-  background: radial-gradient(circle at 74% 45%, transparent 0 26%, rgba(0, 0, 0, 0.35) 70%);
+  background:
+    linear-gradient(180deg, rgba(18, 9, 4, 0.34), rgba(18, 9, 4, 0.04) 42%, rgba(18, 9, 4, 0.24)),
+    radial-gradient(circle at 76% 46%, transparent 0 30%, rgba(0, 0, 0, 0.26) 72%);
   inset: 0;
   position: absolute;
 }
@@ -692,7 +703,7 @@ h2 {
 
 .review-text-face {
   animation: reviewTextFade 10s ease-in-out infinite;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .review-photo-face {
@@ -769,6 +780,19 @@ h2 {
   margin: 0 0 20px;
 }
 
+.review-status {
+  border: 1px solid rgba(177, 125, 67, 0.24);
+  border-radius: 999px;
+  color: var(--caramel);
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  margin-bottom: 18px;
+  padding: 7px 10px;
+  text-transform: uppercase;
+}
+
 .review-cards p {
   color: #51463d;
   font-family: var(--font-libre-baskerville), Georgia, "Times New Roman", serif;
@@ -805,99 +829,14 @@ h2 {
   width: 30px;
 }
 
-.line-icon::before,
-.line-icon::after {
-  border-color: currentColor;
-  content: "";
-  position: absolute;
-}
-
-.clock-icon::before {
-  border: 1.6px solid;
-  border-radius: 999px;
-  inset: 7px;
-}
-
-.clock-icon::after {
-  border-left: 1.6px solid;
-  border-top: 1.6px solid;
-  height: 5px;
-  left: 15px;
-  top: 10px;
-  width: 3px;
-}
-
-.mail-icon::before {
-  border: 1.6px solid;
-  border-radius: 2px;
-  height: 12px;
-  left: 6px;
-  top: 9px;
-  width: 18px;
-}
-
-.mail-icon::after {
-  border-left: 1.6px solid;
-  border-top: 1.6px solid;
-  height: 7px;
-  left: 10px;
-  top: 8px;
-  transform: rotate(-135deg);
-  width: 7px;
-}
-
-.location-icon::before {
-  border: 1.6px solid;
-  border-radius: 999px 999px 999px 0;
-  height: 14px;
-  left: 8px;
-  top: 5px;
-  transform: rotate(-45deg);
-  width: 14px;
-}
-
-.location-icon::after {
-  background: currentColor;
-  border-radius: 999px;
-  height: 4px;
-  left: 13px;
-  top: 10px;
-  width: 4px;
-}
-
-.card-icon-small::before {
-  border: 1.6px solid;
-  border-radius: 2px;
-  height: 14px;
-  left: 6px;
-  top: 8px;
-  width: 18px;
-}
-
-.card-icon-small::after {
-  background: currentColor;
-  height: 1.6px;
-  left: 8px;
-  top: 13px;
-  width: 14px;
-}
-
-.social-icon::before {
-  border: 1.6px solid;
-  border-radius: 999px;
-  height: 7px;
-  left: 11px;
-  top: 6px;
-  width: 7px;
-}
-
-.social-icon::after {
-  border: 1.6px solid;
-  border-radius: 9px 9px 2px 2px;
-  height: 9px;
-  left: 7px;
-  top: 17px;
-  width: 15px;
+.info-svg {
+  fill: none;
+  height: 17px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
+  width: 17px;
 }
 
 .info-section h3 {
@@ -917,10 +856,46 @@ h2 {
 }
 
 .messenger-link,
-.social-row {
+.social-row,
+.contact-method {
   align-items: center;
   display: flex !important;
   gap: 10px;
+}
+
+.contact-method {
+  line-height: 1.35 !important;
+  margin-bottom: 13px !important;
+}
+
+.contact-method-icon {
+  align-items: center;
+  border: 1px solid rgba(177, 125, 67, 0.22);
+  border-radius: 999px;
+  color: var(--caramel);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 12px;
+  height: 25px;
+  justify-content: center;
+  width: 25px;
+}
+
+.contact-method-icon svg {
+  fill: none;
+  height: 14px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  width: 14px;
+}
+
+.contact-method span:last-child {
+  align-items: baseline;
+  display: inline-flex;
+  gap: 5px;
+  min-width: 0;
 }
 
 .messenger-logo {
@@ -931,45 +906,94 @@ h2 {
 
 .payment-logos {
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  margin-top: 16px;
+  display: grid;
+  gap: 9px 12px;
+  grid-template-columns: repeat(3, 72px);
+  margin-top: 8px;
 }
 
-.pay-logo {
-  font-size: 14px;
-  font-weight: 900;
+.payment-intro {
+  color: #4a423a;
+  font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 1.45;
+  margin: 0 0 10px !important;
 }
 
-.gcash {
-  color: #1579ff;
+.payment-logo-frame {
+  align-items: center;
+  display: inline-flex;
+  height: 21px;
+  justify-content: center;
+  overflow: visible;
+  width: 72px;
 }
 
-.maya {
-  color: #21b899;
-  font-size: 16px;
-  text-transform: lowercase;
-}
-
-.gotyme {
-  color: #111;
-  font-size: 16px;
-}
-
-.maribank {
-  color: #f041a8;
-  font-size: 10px;
-  line-height: 1.1;
-}
-
-.maribank-logo {
-  filter: saturate(0.95);
-  height: 26px;
+.payment-logo {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  mix-blend-mode: multiply;
   object-fit: contain;
-  width: 82px;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.bpi-frame {
+  width: 72px;
+}
+
+.bdo-frame {
+  width: 72px;
+}
+
+.gcash-frame {
+  width: 72px;
+}
+
+.maya-frame {
+  width: 72px;
+}
+
+.gotyme-frame {
+  width: 72px;
+  height: 30px;
+}
+
+.maribank-frame {
+  width: 72px;
+}
+
+.bpi-frame .payment-logo {
+  max-height: 20px;
+  max-width: 42px;
+}
+
+.bdo-frame .payment-logo {
+  max-height: 18px;
+  max-width: 58px;
+}
+
+.maya-frame .payment-logo {
+  max-height: 18px;
+  max-width: 72px;
+}
+
+.gotyme-frame .payment-logo {
+  height: 25px;
+  max-height: none;
+  max-width: none;
+  object-fit: contain;
+  width: 72px;
+}
+
+.maribank-frame .payment-logo {
+  height: 21px;
+  max-height: none;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  width: 72px;
 }
 
 .social-row {
@@ -984,53 +1008,13 @@ h2 {
   opacity: 0.76;
 }
 
-.social-badge {
-  align-items: center;
-  border-radius: 6px;
-  box-shadow: 0 5px 12px rgba(45, 29, 15, 0.12);
-  color: #fff;
-  display: inline-flex;
+.social-logo {
+  border-radius: 7px;
+  box-shadow: 0 6px 14px rgba(45, 29, 15, 0.14);
   flex: 0 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 900;
-  height: 24px;
-  justify-content: center;
-  position: relative;
-  width: 24px;
-}
-
-.facebook {
-  background: #316ff6;
-  line-height: 1;
-}
-
-.instagram {
-  background: radial-gradient(circle at 30% 105%, #feda75 0 22%, #fa7e1e 36%, #d62976 58%, #962fbf 78%, #4f5bd5 100%);
-}
-
-.instagram::before {
-  border: 1.7px solid #fff;
-  border-radius: 6px;
-  content: "";
-  height: 13px;
-  position: absolute;
-  width: 13px;
-}
-
-.instagram::after {
-  border: 1.7px solid #fff;
-  border-radius: 50%;
-  box-shadow: 4px -4px 0 -1px #fff;
-  content: "";
-  height: 5px;
-  position: absolute;
-  width: 5px;
-}
-
-.tiktok {
-  background: #050505;
-  font-size: 15px;
+  height: 26px;
+  object-fit: contain;
+  width: 26px;
 }
 
 .social-row small {
@@ -1043,7 +1027,13 @@ h2 {
 
 .info-section strong {
   display: inline-block;
-  min-width: 132px;
+  margin-right: 10px;
+  min-width: 88px;
+}
+
+.contact-method strong {
+  margin-right: 0;
+  min-width: 58px;
 }
 
 .order-section {
@@ -1397,7 +1387,7 @@ h2 {
   align-content: center;
   background:
     linear-gradient(90deg, rgba(18, 9, 4, 0.9), rgba(18, 9, 4, 0.45)),
-    url("/photos/hero-lets-bean-generated.png");
+    url("/photos/hero-real-cafe-final.png");
   background-position: center;
   background-size: cover;
   color: #fff;

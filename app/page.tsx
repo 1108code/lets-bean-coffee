@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { assetPath } from "./asset-path";
 
 const messengerUrl = "https://m.me/689891387533123";
 const address =
@@ -85,6 +86,8 @@ type SiteContent = {
   footerLine: string;
   copyright: string;
   email: string;
+  mobileNumber: string;
+  landline: string;
   address: string;
   weekdayLabel: string;
   weekdayHours: string;
@@ -101,24 +104,29 @@ type SiteContent = {
 
 const publishedStorageKey = "lets-bean-cms-published";
 const cmsApiPath = "/.netlify/functions/cms";
+const unavailableReviewTitles = new Set([
+  "Reviews Unavailable",
+  "Photos Unavailable",
+  "Awaiting Client Update",
+]);
 
 const defaultContent: SiteContent = {
-  heroTitle: "AUTHENTIC POURS.",
-  heroAccent: "UNFILTERED VIBES.",
+  heroTitle: "Authentic pours.",
+  heroAccent: "Unfiltered vibes.",
   heroCopy:
     "A cozy space for good coffee, great conversations, and meaningful moments.",
   menuEyebrow: "OUR MENU",
-  menuHeading: "SOMETHING FOR EVERY CRAVING",
+  menuHeading: "Something for Every Craving",
   menuNote: "Full menu available soon. Message us for today's selections.",
   menuCta: "ASK FOR TODAY'S MENU",
   aboutEyebrow: "ABOUT LET'S BEAN COFFEE",
-  aboutHeading: "MORE THAN JUST COFFEE",
+  aboutHeading: "More Than Just Coffee",
   aboutCopy:
     "We're here to serve quality brews, delicious bites, and a space where you can relax, focus, and connect. Thank you for being part of our journey.",
   aboutImage: "/photos/about-drink-feature.png",
   privateImage: "/photos/private-room-storefront.png",
   privateEyebrow: "PRIVATE ROOM RENTAL",
-  privateHeading: "A QUIET SPACE FOR YOUR MOMENTS",
+  privateHeading: "A Quiet Space for Your Moments",
   privateCopy:
     "Reserve a comfortable private room for meetings, study sessions, small gatherings, and private conversations.",
   privateLabelTitle: "PRIVATE ROOM RENTAL",
@@ -126,17 +134,19 @@ const defaultContent: SiteContent = {
   privatePrimaryCta: "INQUIRE NOW",
   privateSecondaryCta: "MESSAGE US",
   reviewsEyebrow: "CUSTOMER REVIEWS",
-  reviewsHeading: "KIND WORDS FROM OUR GUESTS",
+  reviewsHeading: "CUSTOMER REVIEWS COMING SOON",
   reviewsCopy:
-    "We are preparing a space for real customer notes and shared moments. Visit our social pages to see the latest posts and leave your own Let's Bean Coffee experience.",
+    "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
-  orderHeading: "LET US PREPARE SOMETHING FOR YOU",
-  paymentIntro: "BPI or BDO Bank Transfer",
+  orderHeading: "Let Us Prepare Something for You",
+  paymentIntro: "Accepted Payments: Cash · Bank Transfer · E-wallets",
   footerLine: "Authentic Pours. Unfiltered Vibes.",
   copyright: "© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
   email: "letsbean.cafe@gmail.com",
-  address,
+  mobileNumber: "09568167071",
+  landline: "(049) 536-2552",
+  address: "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Laguna, Philippines",
   weekdayLabel: "Monday-Friday",
   weekdayHours: "10:00 AM - 10:00 PM",
   weekendLabel: "Saturday-Sunday",
@@ -149,18 +159,18 @@ const defaultContent: SiteContent = {
   menu: menuCards,
   reviews: [
     {
-      title: "Cozy Moments",
-      body: "Customer stories and cafe moments can be featured here once available.",
+      title: "Reviews Unavailable",
+      body: "Real customer reviews will appear here once added through the CMS.",
       image: "/photos/review-sample-cozy.webp",
     },
     {
-      title: "Favorite Orders",
-      body: "Highlight real drink, pastry, meal, and snack feedback from guests.",
+      title: "Photos Unavailable",
+      body: "Guest photos and featured cafe moments can be uploaded here later.",
       image: "/photos/review-sample-orders.webp",
     },
     {
-      title: "Private Room Notes",
-      body: "Share real impressions from meetings, study sessions, and small gatherings.",
+      title: "Awaiting Client Update",
+      body: "This card is ready for a real review, quote, or private room note.",
       image: "/photos/review-sample-private-room.webp",
     },
   ],
@@ -263,6 +273,106 @@ function ButtonIcon({ type }: { type: "cup" | "menu" | "chat" }) {
   );
 }
 
+function ContactIcon({ type }: { type: "clock" | "mail" | "location" | "payment" | "follow" }) {
+  const commonProps = {
+    className: "info-svg",
+    viewBox: "0 0 24 24",
+    "aria-hidden": true,
+  };
+
+  if (type === "clock") {
+    return (
+      <span className="info-icon">
+        <svg {...commonProps}>
+          <circle cx="12" cy="12" r="7.2" />
+          <path d="M12 7.8v4.4l3 1.8" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (type === "mail") {
+    return (
+      <span className="info-icon">
+        <svg {...commonProps}>
+          <rect x="4.5" y="6.5" width="15" height="11" rx="1.6" />
+          <path d="m5.2 7.5 6.8 5.3 6.8-5.3" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (type === "location") {
+    return (
+      <span className="info-icon">
+        <svg {...commonProps}>
+          <path d="M12 20s6-5.2 6-10.1a6 6 0 0 0-12 0C6 14.8 12 20 12 20Z" />
+          <circle cx="12" cy="9.9" r="1.9" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (type === "payment") {
+    return (
+      <span className="info-icon">
+        <svg {...commonProps}>
+          <rect x="4.4" y="6.8" width="15.2" height="10.4" rx="1.5" />
+          <path d="M4.8 10h14.4" />
+          <path d="M7.2 14.2h4.1" />
+        </svg>
+      </span>
+    );
+  }
+
+  return (
+    <span className="info-icon">
+      <svg {...commonProps}>
+        <circle cx="8.4" cy="9.3" r="2.4" />
+        <circle cx="16" cy="8.7" r="2" />
+        <path d="M4.7 17.4c.7-2.8 2-4.2 3.8-4.2s3.1 1.4 3.8 4.2" />
+        <path d="M13.2 16.6c.5-2.1 1.5-3.1 2.9-3.1 1.5 0 2.5 1.1 3.1 3.3" />
+      </svg>
+    </span>
+  );
+}
+
+function ContactMethodIcon({ type }: { type: "email" | "mobile" | "landline" }) {
+  if (type === "email") {
+    return (
+      <span className="contact-method-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="4.5" y="7" width="15" height="10" rx="1.5" />
+          <path d="m5.2 8 6.8 5 6.8-5" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (type === "mobile") {
+    return (
+      <span className="contact-method-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="8" y="3.8" width="8" height="16.4" rx="2" />
+          <path d="M10.4 6h3.2" />
+          <path d="M11.5 17.7h1" />
+        </svg>
+      </span>
+    );
+  }
+
+  return (
+    <span className="contact-method-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.2 5.8h9.6v11.6H7.2z" />
+        <path d="M9.2 8.4h5.6" />
+        <path d="M9.2 11.1h5.6" />
+        <path d="M9.2 13.8h2.4" />
+      </svg>
+    </span>
+  );
+}
+
 function normalizeContent(nextContent: Partial<SiteContent>): SiteContent {
   return {
     ...defaultContent,
@@ -321,12 +431,15 @@ export default function Home() {
   const activeMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(content.address)}`;
   const activeMenu = content.menu?.length ? content.menu : menuCards;
   const activeReviews = content.reviews?.length ? content.reviews : defaultContent.reviews;
+  const hasPublicReviews = activeReviews.some(
+    (review) => !unavailableReviewTitles.has(review.title),
+  );
 
   return (
     <main>
       <header className="site-header">
         <a href="#home" className="brand" aria-label="Let's Bean Coffee home">
-          <img src="/lets-bean-logo-light.png" alt="Let's Bean Coffee logo" />
+          <img src={assetPath("/lets-bean-logo-light.png")} alt="Let's Bean Coffee logo" />
         </a>
         <input className="nav-toggle" type="checkbox" id="nav-toggle" />
         <label className="hamburger" htmlFor="nav-toggle" aria-label="Open menu">
@@ -370,7 +483,7 @@ export default function Home() {
             Chat with us
           </a>
           <span className="messenger-dot" aria-hidden="true">
-            <img src="/icons/messenger.svg" alt="" />
+            <img src={assetPath("/icons/messenger.svg")} alt="" />
           </span>
         </div>
       </section>
@@ -392,8 +505,8 @@ export default function Home() {
               key={card.title}
             >
               <span className="menu-card-images" aria-hidden="true">
-                <img className="menu-card-image primary" src={card.image} alt="" />
-                <img className="menu-card-image secondary" src={card.imageAlt || card.image} alt="" />
+                <img className="menu-card-image primary" src={assetPath(card.image)} alt="" />
+                <img className="menu-card-image secondary" src={assetPath(card.imageAlt || card.image)} alt="" />
               </span>
               <span className="card-overlay" />
               <span className="card-icon" aria-hidden="true">
@@ -419,7 +532,7 @@ export default function Home() {
         </div>
         <img
           className="about-image"
-          src={content.aboutImage}
+          src={assetPath(content.aboutImage)}
           alt="Let's Bean Coffee branded matcha drink in the cafe"
         />
       </section>
@@ -428,7 +541,7 @@ export default function Home() {
         <div className="private-visual" aria-label="Let's Bean Coffee private room visual">
           <img
             className="private-visual-main"
-            src={content.privateImage}
+            src={assetPath(content.privateImage)}
             alt="Let's Bean Coffee storefront entrance"
           />
           <span className="private-visual-filter" aria-hidden="true" />
@@ -443,15 +556,16 @@ export default function Home() {
           <p>{content.privateCopy}</p>
           <div className="private-actions">
             <a className="gold-button" href="#order">
-              {content.privatePrimaryCta}
+              {content.privatePrimaryCta} <ButtonIcon type="menu" />
             </a>
             <a className="outline-button light" href={activeMessengerUrl} target="_blank" rel="noreferrer">
-              {content.privateSecondaryCta}
+              {content.privateSecondaryCta} <ButtonIcon type="chat" />
             </a>
           </div>
         </div>
       </section>
 
+      {hasPublicReviews && (
       <section className="reviews-section" aria-labelledby="reviews-heading">
         <div className="reviews-copy">
           <p className="eyebrow dark">{content.reviewsEyebrow}</p>
@@ -465,65 +579,92 @@ export default function Home() {
           {activeReviews.map((review, index) => (
             <article className="review-card-rotator" key={`${review.title}-${index}`}>
               <div className="review-card-face review-text-face">
+                <span className="review-status">Unavailable</span>
                 <h3>{review.title}</h3>
                 <p>“{review.body}”</p>
               </div>
               <div className="review-card-face review-photo-face" aria-hidden="true">
-                <img src={review.image || "/photos/review-sample-cozy.webp"} alt="" />
+                <img src={assetPath(review.image || "/photos/review-sample-cozy.webp")} alt="" />
                 <span>{review.title}</span>
               </div>
             </article>
           ))}
         </div>
       </section>
+      )}
 
       <section id="contact" className="info-section">
         <article>
-          <span className="info-icon line-icon clock-icon" aria-hidden="true" />
+          <ContactIcon type="clock" />
           <h3>BUSINESS HOURS</h3>
           <p><strong>{content.weekdayLabel}</strong>{content.weekdayHours}</p>
           <p><strong>{content.weekendLabel}</strong>{content.weekendHours}</p>
         </article>
         <article>
-          <span className="info-icon line-icon mail-icon" aria-hidden="true" />
+          <ContactIcon type="mail" />
           <h3>CONTACT US</h3>
-          <a href={`mailto:${content.email}`}>{content.email}</a>
+          <a className="contact-method" href={`mailto:${content.email}`}>
+            <ContactMethodIcon type="email" />
+            <span>{content.email}</span>
+          </a>
+          <a className="contact-method" href={`tel:${content.mobileNumber.replace(/\D/g, "")}`}>
+            <ContactMethodIcon type="mobile" />
+            <span><strong>Mobile:</strong>{content.mobileNumber}</span>
+          </a>
+          <a className="contact-method" href={`tel:${content.landline.replace(/\D/g, "")}`}>
+            <ContactMethodIcon type="landline" />
+            <span><strong>Landline:</strong>{content.landline}</span>
+          </a>
           <a className="messenger-link" href={activeMessengerUrl} target="_blank" rel="noreferrer">
-            <img className="messenger-logo" src="/icons/messenger.svg" alt="" aria-hidden="true" />
+            <img className="messenger-logo" src={assetPath("/icons/messenger.svg")} alt="" aria-hidden="true" />
             {content.messengerLabel}
           </a>
         </article>
         <article>
-          <span className="info-icon line-icon location-icon" aria-hidden="true" />
+          <ContactIcon type="location" />
           <h3>LOCATION</h3>
           <a href={activeMapsUrl} target="_blank" rel="noreferrer">
             {content.address}
           </a>
         </article>
         <article>
-          <span className="info-icon line-icon card-icon-small" aria-hidden="true" />
+          <ContactIcon type="payment" />
           <h3>PAYMENT METHODS</h3>
-          <p>{content.paymentIntro}</p>
+          <p className="payment-intro">{content.paymentIntro}</p>
           <div className="payment-logos" aria-label="Accepted payment methods">
-            <span className="pay-logo gcash">GCash</span>
-            <span className="pay-logo maya">maya</span>
-            <span className="pay-logo gotyme">GoTyme</span>
-            <img className="maribank-logo" src="/icons/maribank-logo.png" alt="MariBank" />
+            <span className="payment-logo-frame bpi-frame">
+              <img className="payment-logo" src={assetPath("/icons/bpi.svg")} alt="BPI Bank Transfer" />
+            </span>
+            <span className="payment-logo-frame bdo-frame">
+              <img className="payment-logo" src={assetPath("/icons/bdo.svg")} alt="BDO Bank Transfer" />
+            </span>
+            <span className="payment-logo-frame gcash-frame">
+              <img className="payment-logo" src={assetPath("/icons/gcash.svg")} alt="GCash" />
+            </span>
+            <span className="payment-logo-frame maya-frame">
+              <img className="payment-logo" src={assetPath("/icons/maya.svg")} alt="Maya" />
+            </span>
+            <span className="payment-logo-frame gotyme-frame">
+              <img className="payment-logo" src={assetPath("/icons/gotyme-bank-transparent.png")} alt="GoTyme Bank" />
+            </span>
+            <span className="payment-logo-frame maribank-frame">
+              <img className="payment-logo" src={assetPath("/icons/maribank-logo.png")} alt="MariBank" />
+            </span>
           </div>
         </article>
         <article>
-          <span className="info-icon line-icon social-icon" aria-hidden="true" />
+          <ContactIcon type="follow" />
           <h3>FOLLOW US</h3>
           <a className="social-row" href={content.facebook} target="_blank" rel="noreferrer">
-            <span className="social-badge facebook" aria-hidden="true">f</span>
+            <img className="social-logo" src={assetPath("/icons/facebook.svg")} alt="" aria-hidden="true" />
             <span>Facebook<small>@letsbeancoffee</small></span>
           </a>
           <a className="social-row" href={content.instagram} target="_blank" rel="noreferrer">
-            <span className="social-badge instagram" aria-hidden="true" />
+            <img className="social-logo" src={assetPath("/icons/instagram.svg")} alt="" aria-hidden="true" />
             <span>Instagram<small>@letsbeancafe</small></span>
           </a>
           <a className="social-row" href={content.tiktok} target="_blank" rel="noreferrer">
-            <span className="social-badge tiktok" aria-hidden="true">♪</span>
+            <img className="social-logo" src={assetPath("/icons/tiktok.svg")} alt="" aria-hidden="true" />
             <span>TikTok<small>@letsbeancoffee3</small></span>
           </a>
         </article>
@@ -561,7 +702,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <img src="/lets-bean-logo-light.png" alt="Let's Bean Coffee logo" />
+        <img src={assetPath("/lets-bean-logo-light.png")} alt="Let's Bean Coffee logo" />
         <nav aria-label="Footer navigation">
           {navItems.map(([label, href]) => (
             <a key={label} href={href}>{label}</a>
@@ -582,7 +723,7 @@ export default function Home() {
       </footer>
 
       <a className="floating-messenger" href={activeMessengerUrl} target="_blank" rel="noreferrer" aria-label="Open Facebook Messenger">
-        <img src="/icons/messenger.svg" alt="" aria-hidden="true" />
+        <img src={assetPath("/icons/messenger.svg")} alt="" aria-hidden="true" />
       </a>
     </main>
   );

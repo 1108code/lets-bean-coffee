@@ -1,5 +1,3 @@
-const { getStore } = require("@netlify/blobs");
-
 const headers = {
   "cache-control": "no-store",
   "content-type": "application/json; charset=utf-8",
@@ -11,6 +9,12 @@ const bucketName = process.env.SUPABASE_STORAGE_BUCKET || "cms-uploads";
 
 function hasSupabaseConfig() {
   return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
+function missingSupabaseConfig() {
+  return ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"].filter(
+    (key) => !process.env[key],
+  );
 }
 
 function supabaseUrl(path) {
@@ -111,80 +115,112 @@ async function uploadSupabasePhoto(payload) {
 }
 
 exports.handler = async (event) => {
-  const store = getStore("lets-bean-cms");
-
-  if (event.httpMethod === "GET") {
-    let content = null;
-
-    if (hasSupabaseConfig()) {
-      content = await getSupabaseContent();
-    } else {
-      content = await store.get("content", { type: "json" });
-    }
-
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ content: content || null }),
-    };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: "Method not allowed" }),
-    };
-  }
-
-  const requiredPassword = process.env.CMS_PASSWORD;
-  const providedPassword =
-    event.headers["x-cms-password"] || event.headers["X-Cms-Password"];
-
-  if (requiredPassword && providedPassword !== requiredPassword) {
-    return {
-      statusCode: 401,
-      headers,
-      body: JSON.stringify({ error: "Invalid CMS password" }),
-    };
-  }
-
-  const payload = JSON.parse(event.body || "{}");
-
-  if (payload.action === "upload") {
-    if (!hasSupabaseConfig()) {
+  try {
+    if (event.httpMethod === "GET" && event.queryStringParameters?.diagnostics === "1") {
       return {
-        statusCode: 501,
+        statusCode: 200,
         headers,
-        body: JSON.stringify({ error: "Supabase photo storage is not configured yet" }),
+        body: JSON.stringify({
+          ok: true,
+          cmsPasswordSet: Boolean(process.env.CMS_PASSWORD),
+          supabaseUrlSet: Boolean(process.env.SUPABASE_URL),
+          supabaseServiceRoleKeySet: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+          tableName,
+          bucketName,
+        }),
       };
     }
 
-    const upload = await uploadSupabasePhoto(payload);
+    if (event.httpMethod === "GET") {
+      let content = null;
+
+      if (hasSupabaseConfig()) {
+        content = await getSupabaseContent();
+      } else {
+        const { getStore } = require("@netlify/blobs");
+        const store = getStore("lets-bean-cms");
+        content = await store.get("content", { type: "json" });
+      }
+
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ content: content || null }),
+      };
+    }
+
+    if (event.httpMethod !== "POST") {
+      return {
+        statusCode: 405,
+        headers,
+        body: JSON.stringify({ error: "Method not allowed" }),
+      };
+    }
+
+    const requiredPassword = process.env.CMS_PASSWORD;
+    const providedPassword =
+      event.headers["x-cms-password"] || event.headers["X-Cms-Password"];
+
+    if (requiredPassword && providedPassword !== requiredPassword) {
+      return {
+        statusCode: 401,
+        headers,
+        body: JSON.stringify({ error: "Invalid CMS password" }),
+      };
+    }
+
+    const payload = JSON.parse(event.body || "{}");
+
+    if (payload.action === "upload") {
+      if (!hasSupabaseConfig()) {
+        return {
+          statusCode: 501,
+          headers,
+          body: JSON.stringify({ error: "Supabase photo storage is not configured yet" }),
+        };
+      }
+
+      const upload = await uploadSupabasePhoto(payload);
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ ok: true, ...upload }),
+      };
+    }
+
+    if (!payload.content || typeof payload.content !== "object") {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Missing CMS content" }),
+      };
+    }
+
+    if (hasSupabaseConfig()) {
+      await saveSupabaseContent(payload.content);
+    } else {
+      const missing = missingSupabaseConfig();
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          error: `Supabase is not configured in Netlify. Missing: ${missing.join(", ")}`,
+        }),
+      };
+    }
+
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ ok: true, ...upload }),
+      body: JSON.stringify({ ok: true, updatedAt: new Date().toISOString() }),
     };
-  }
-
-  if (!payload.content || typeof payload.content !== "object") {
+  } catch (error) {
     return {
-      statusCode: 400,
+      statusCode: 500,
       headers,
-      body: JSON.stringify({ error: "Missing CMS content" }),
+      body: JSON.stringify({
+        error: error instanceof Error ? error.message : "CMS function failed",
+      }),
     };
   }
-
-  if (hasSupabaseConfig()) {
-    await saveSupabaseContent(payload.content);
-  } else {
-    await store.setJSON("content", payload.content);
-  }
-
-  return {
-    statusCode: 200,
-    headers,
-    body: JSON.stringify({ ok: true, updatedAt: new Date().toISOString() }),
-  };
 };

@@ -250,7 +250,7 @@ export default function CmsPage() {
 
       if (!response.ok) {
         const data = (await response.json().catch(() => ({}))) as { error?: string };
-        throw new Error(data.error || "Publish failed");
+        throw new Error(data.error || `Publish failed (${response.status})`);
       }
 
       window.localStorage.setItem(
@@ -264,7 +264,13 @@ export default function CmsPage() {
         publishedStorageKey,
         JSON.stringify(normalizedContent),
       );
-      setCopyStatus(error instanceof Error ? error.message : "Saved locally");
+      const isLocalPreview = window.location.hostname === "localhost";
+      const message = error instanceof Error ? error.message : "Saved locally";
+      setCopyStatus(
+        isLocalPreview && message.includes("Publish failed")
+          ? "Local preview saved. Publish on live Netlify CMS."
+          : message,
+      );
     }
 
     window.setTimeout(() => setCopyStatus("Ready"), 2600);

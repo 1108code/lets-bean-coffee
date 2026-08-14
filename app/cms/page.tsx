@@ -399,6 +399,19 @@ export default function CmsPage() {
     );
   }
 
+  function renderManual(items: string[]) {
+    return (
+      <div className="cms-manual" aria-label="Section guide">
+        <strong>Quick guide</strong>
+        <ul>
+          {items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <main className="cms-shell">
       <aside className="cms-sidebar">
@@ -458,6 +471,11 @@ export default function CmsPage() {
           <div className="cms-grid">
             <section className="cms-panel">
               <h2>Hero Section</h2>
+              {renderManual([
+                "Edit the first-screen headline and short intro only when the main message changes.",
+                "Keep text short so the hero stays clean on mobile.",
+                "Upload About and Private Room photos here, then click Publish.",
+              ])}
               <label>
                 Main headline
                 <input
@@ -537,6 +555,11 @@ export default function CmsPage() {
         {activePanel === "sections" && (
           <section className="cms-panel">
             <h2>Section Copy</h2>
+            {renderManual([
+              "Use this for section titles, short descriptions, and button labels.",
+              "Keep headings concise so they do not crowd the layout on mobile.",
+              "Avoid adding prices unless the final menu is confirmed.",
+            ])}
             <div className="cms-form-grid">
               {renderTextField("Menu eyebrow", "menuEyebrow")}
               {renderTextField("Menu heading", "menuHeading")}
@@ -562,6 +585,11 @@ export default function CmsPage() {
         {activePanel === "menu" && (
           <section className="cms-panel">
             <h2>Menu Categories</h2>
+            {renderManual([
+              "Each category supports two photos that rotate on the public website.",
+              "Use real photos related to the category, ideally square or portrait crops.",
+              "After changing names, paths, or photos, click Publish to update all devices.",
+            ])}
             <div className="cms-list">
               {content.menu.map((item, index) => (
                 <article className="cms-list-item" key={`${item.title}-${index}`}>
@@ -654,6 +682,11 @@ export default function CmsPage() {
         {activePanel === "reviews" && (
           <section className="cms-panel">
             <h2>Customer Review Area</h2>
+            {renderManual([
+              "Add only real customer reviews or client-approved guest photos.",
+              "The public review section stays hidden until real review content is added.",
+              "Keep each review short and natural, around one to two sentences.",
+            ])}
             <div className="cms-list">
               {content.reviews.map((item, index) => (
                 <article className="cms-list-item compact" key={`${item.title}-${index}`}>
@@ -729,6 +762,11 @@ export default function CmsPage() {
         {activePanel === "contact" && (
           <section className="cms-panel">
             <h2>Business Information</h2>
+            {renderManual([
+              "Update email, phone numbers, address, hours, and social links here.",
+              "Use full URLs for Messenger, Facebook, Instagram, and TikTok.",
+              "Double-check spelling and numbers before publishing.",
+            ])}
             <div className="cms-form-grid">
               {[
                 ["Email", "email"],
@@ -765,6 +803,11 @@ export default function CmsPage() {
         {activePanel === "order" && (
           <section className="cms-panel">
             <h2>Order, Payment, Footer</h2>
+            {renderManual([
+              "Use this for order section text, accepted payment wording, and footer brand line.",
+              "Keep payment wording short so the logo area remains clean.",
+              "Do not add checkout wording unless a real checkout system is ready.",
+            ])}
             <div className="cms-form-grid">
               {renderTextField("Order eyebrow", "orderEyebrow")}
               {renderTextField("Order heading", "orderHeading")}
@@ -777,6 +820,10 @@ export default function CmsPage() {
         {activePanel === "locked" && (
           <section className="cms-panel locked-panel">
             <h2>Locked Items</h2>
+            {renderManual([
+              "These parts are read-only to avoid breaking layout, integrations, or legal text.",
+              "Ask the developer for layout, code, animation, payment logo, or copyright changes.",
+            ])}
             <p className="cms-note">
               These are intentionally locked because changing them can break
               layout, behavior, accessibility, or integrations.
@@ -813,6 +860,11 @@ export default function CmsPage() {
         {activePanel === "backup" && (
           <section className="cms-panel locked-panel">
             <h2>Safe Backup</h2>
+            {renderManual([
+              "Use Copy Safe Backup only for saving editable content as JSON.",
+              "This does not publish the website; Publish is still required.",
+              "Locked/legal fields are intentionally excluded.",
+            ])}
             <p className="cms-note">
               This read-only backup includes editable CMS content only. Locked
               legal/system fields, including copyright, are excluded.

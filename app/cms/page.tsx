@@ -92,7 +92,7 @@ const defaultContent: CmsContent = {
   reviewsEyebrow: "Customer Reviews",
   reviewsHeading: "Customer Reviews Coming Soon",
   reviewsCopy:
-    "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
+    "Warm stories, favorite orders, and cafe moments will be shared here soon.",
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
   orderHeading: "Let Us Prepare Something for You",
@@ -123,7 +123,7 @@ const defaultContent: CmsContent = {
   reviews: [
     {
       title: "Reviews Unavailable",
-      body: "Real customer reviews will appear here once added through the CMS.",
+      body: "Guest stories and cafe moments will be shared here soon.",
       image: "/photos/review-sample-cozy.webp",
     },
     {

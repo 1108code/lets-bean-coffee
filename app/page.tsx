@@ -136,7 +136,7 @@ const defaultContent: SiteContent = {
   reviewsEyebrow: "Customer Reviews",
   reviewsHeading: "Customer Reviews Coming Soon",
   reviewsCopy:
-    "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
+    "Warm stories, favorite orders, and cafe moments will be shared here soon.",
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
   orderHeading: "Let Us Prepare Something for You",
@@ -160,7 +160,7 @@ const defaultContent: SiteContent = {
   reviews: [
     {
       title: "Reviews Unavailable",
-      body: "Real customer reviews will appear here once added through the CMS.",
+      body: "Guest stories and cafe moments will be shared here soon.",
       image: "/photos/review-sample-cozy.webp",
     },
     {
@@ -438,9 +438,13 @@ export default function Home() {
     hasPublicReviews && content.reviewsHeading === defaultContent.reviewsHeading
       ? "Kind Words from Our Guests"
       : content.reviewsHeading;
+  const internalReviewCopyPattern = /reserved|through the cms|customer feedback|approved by the client/i;
+  const publicComingSoonCopy = "Warm stories, favorite orders, and cafe moments will be shared here soon.";
   const reviewsCopy =
     hasPublicReviews && content.reviewsCopy === defaultContent.reviewsCopy
       ? "Real stories, favorite orders, and cafe moments shared by the people who make Let's Bean Coffee feel like home."
+      : internalReviewCopyPattern.test(content.reviewsCopy)
+        ? publicComingSoonCopy
       : content.reviewsCopy;
 
   return (
@@ -606,7 +610,7 @@ export default function Home() {
             <article>
               <span>Coming Soon</span>
               <h3>More guest stories soon</h3>
-              <p>Real reviews and cafe moments will be shared here as our community grows.</p>
+              <p>Warm stories and cafe moments will be shared here soon.</p>
             </article>
           </div>
         )}

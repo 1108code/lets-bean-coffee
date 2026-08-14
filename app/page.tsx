@@ -720,6 +720,9 @@ export default function Home() {
         </div>
         <p>{content.footerLine}</p>
         <small>{content.copyright}</small>
+        <small className="footer-credit">
+          Website Design &amp; Development by SMM Solutions by Pabs Rivera
+        </small>
       </footer>
 
       <a className="floating-messenger" href={activeMessengerUrl} target="_blank" rel="noreferrer" aria-label="Open Facebook Messenger">

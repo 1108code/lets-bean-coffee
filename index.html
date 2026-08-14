@@ -3,15 +3,364 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Authentic pours, unfiltered vibes. Coffee, bites, private room rental, and Messenger inquiries from Let's Bean Coffee."
-    />
-    <link rel="icon" href="/favicon.svg" />
-    <title>Let's Bean Coffee</title>
+    <meta name="description" content="Social media boosting packages by SMM Solutions by Pabs Rivera." />
+    <title>SMM Solutions by Pabs Rivera | Social Media Boosting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="calculator.css" />
+    <link rel="stylesheet" href="promo.css" />
+    <link rel="stylesheet" href="extras.css" />
+    <link rel="stylesheet" href="qr.css" />
+    <link rel="stylesheet" href="qr-character.css" />
+    <link rel="stylesheet" href="link-fixer.css" />
+    <link rel="stylesheet" href="shorten-link.css" />
+    <link rel="stylesheet" href="feature-order.css" />
+    <link rel="stylesheet" href="samples.css" />
+    <link rel="stylesheet" href="sample-placement.css" />
+    <link rel="stylesheet" href="reviews.css" />
+    <link rel="stylesheet" href="ui-refresh.css" />
+    <link rel="stylesheet" href="promo-first.css" />
+    <!-- Google Analytics: visitor and page-view tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTL26W69X9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-LTL26W69X9');
+    </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/netlify-main.tsx"></script>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SMM Solutions home"><span class="brand-mark">↗</span><span>SMM <b>Solutions</b><small>by Pabs Rivera</small></span></a>
+      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav aria-label="Main navigation"><a href="#services">Services</a><a class="website-nav-link" href="#website-creation">Websites <span>NEW</span></a><a class="marketplace-link" href="https://smm-solutions-marketplace-b9888.web.app">Buy &amp; Sell</a><a class="creator-community-link" href="creator-community.html">Creator Hub <span>NEW</span></a><a class="vip-reseller-link" href="vip-reseller.html">VIP Resellers <span>NEW</span></a><button class="nav-link-button" type="button" data-dialog="order-lookup">Track order</button><a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor">Order now ↗</a></nav>
+    </header>
+
+    <div class="promo-ribbon" role="note"><span>LIMITED PROMO PACKAGES</span><b>Better-value bundles are available now.</b><a href="#services">View deals</a></div>
+
+    <section class="site-announcements" aria-label="What is new at SMM Solutions">
+      <div class="announcement-title"><span>✦</span><div><b>WHAT’S NEW</b><small>More ways to order, share, and explore.</small></div></div>
+      <a href="https://smm-solutions-marketplace-b9888.web.app" class="announcement-item"><b>Marketplace</b><span>Buy, sell &amp; hire →</span></a>
+      <button type="button" class="announcement-item" data-dialog="qr-maker"><b>Free QR Maker</b><span>Create a QR code →</span></button>
+      <a href="#calculator" class="announcement-item"><b>Quick Custom Quote</b><span>Calculate regular rates →</span></a>
+      <a href="#services" class="announcement-item"><b>Faster estimates</b><span>Minutes–hours available →</span></a>
+    </section>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">SOCIAL GROWTH &amp; WEBSITE SERVICES</p>
+          <h1>Everything you need<br />to <span>grow with clarity.</span></h1>
+          <p class="hero-text">Boost your social presence, build a professional website, and access useful tools—all in one straightforward platform.</p>
+          <div class="hero-actions"><a class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Start my order <span>→</span></a><a class="button button-quiet" href="#choose-goal">Choose my service</a></div>
+          <button class="order-lookup-link" type="button" data-dialog="order-lookup">Already ordered? Track your Order ID →</button>
+          <div class="trust-row"><span>✓ Public link only</span><span>⚡ Minutes–hours estimates</span><span>♡ Order updates available</span></div>
+        </div>
+        <aside class="hero-service-summary" aria-label="SMM Solutions service overview">
+          <div class="summary-head"><span>SMM SOLUTIONS</span><b>What we can help with</b></div>
+          <a href="#services"><i>01</i><div><small>Social media growth</small><strong>Platform packages &amp; custom requests</strong></div><b>→</b></a>
+          <a href="#website-creation"><i>02</i><div><small>Website creation</small><strong>Business websites from <span class="currency-price" data-php="1299">₱1,299</span></strong></div><b>→</b></a>
+          <a href="#features"><i>03</i><div><small>Customer features</small><strong>Tools, calculator, marketplace &amp; more</strong></div><b>→</b></a>
+          <p>Choose a goal, see the options, then order with confidence.</p>
+        </aside>
+      </section>
+
+      <section class="goal-dashboard" id="choose-goal" aria-labelledby="goal-dashboard-title">
+        <div class="goal-dashboard-heading"><p class="eyebrow">CHOOSE YOUR GOAL</p><h2 id="goal-dashboard-title">What do you need today?</h2><p>Pick one option and go straight to the right service.</p></div>
+        <div class="goal-dashboard-grid">
+          <a href="#services" data-goal-filter="facebook"><span>f</span><b>Grow my Facebook</b><small>Promos for reach &amp; engagement →</small></a>
+          <a href="#services" data-goal-filter="instagram"><span>◎</span><b>Grow my Instagram</b><small>Followers, likes &amp; views →</small></a>
+          <a href="#services" data-goal-filter="tiktok"><span>♪</span><b>Grow my TikTok</b><small>Video reach &amp; engagement →</small></a>
+          <a href="#services" data-goal-filter="youtube"><span>▶</span><b>Grow my YouTube</b><small>Views, likes &amp; channel support →</small></a>
+          <a class="goal-website" href="#website-creation"><span>⌂</span><b>Build my website</b><small>Packages from <i class="currency-price" data-php="1299">₱1,299</i> →</small></a>
+          <a class="goal-vip" href="vip-reseller.html"><span>★</span><b>Become a VIP Reseller</b><small>See reseller benefits →</small></a>
+        </div>
+        <section class="customer-tools goal-customer-tools" aria-label="Customer tools">
+          <div class="tool-copy"><p class="eyebrow">QUICK TOOLS</p><h2>Helpful in one tap.</h2></div>
+          <div class="tool-actions"><button type="button" data-dialog="order-lookup"><span>01</span><b>Track an order</b><small>Use your Order ID</small></button><button class="referral-bonus" type="button" data-dialog="referral"><span>✦ REFERRAL BONUS</span><b>Refer a friend</b><small>Ask about your reward →</small></button><a href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer"><span>03</span><b>Share feedback</b><small>Message our page</small></a></div>
+        </section>
+      </section>
+
+      <section class="calculator" id="calculator">
+        <div class="calculator-copy"><p class="eyebrow">QUICK CUSTOM QUOTE</p><h2>Need a different amount?</h2><p>Get a regular-rate estimate in a few taps. Promo packages below are still the better-value choice.</p><div class="calculator-note">Regular rates · instant estimate · no password needed</div></div>
+        <form class="calculator-card" id="rate-calculator">
+          <label>Platform<select id="calc-platform" aria-label="Platform"></select></label>
+          <label>Service<select id="calc-service" aria-label="Service"></select></label>
+          <label>Quantity <input id="calc-quantity" type="number" min="1" inputmode="numeric" aria-label="Quantity" /></label>
+          <label class="currency-control">Show estimate in <select id="currency-select" aria-label="Display currency"><option value="PHP">PHP (original)</option><option value="USD">US Dollar</option><option value="EUR">Euro</option><option value="GBP">British Pound</option><option value="SGD">Singapore Dollar</option><option value="AUD">Australian Dollar</option><option value="CAD">Canadian Dollar</option><option value="AED">UAE Dirham</option><option value="JPY">Japanese Yen</option></select></label>
+          <div class="calculation"><span id="calc-rate">Rate</span><strong id="calc-total">₱0</strong><small id="calc-detail">Choose a service to start.</small></div>
+          <a class="button button-primary" id="calc-order" href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Use this quote <span>→</span></a>
+        </form>
+      </section>
+
+      <section class="service-intro" id="services">
+        <div><p class="eyebrow">LIMITED PROMO PACKAGES</p><h2>Choose your platform,<br />then unlock a better deal.</h2></div>
+        <p>Browse by platform. These promo packages are our best-value options, while the quick quote above is available for custom amounts.</p>
+      </section>
+
+      <section class="service-showcase" aria-label="Social growth service categories">
+        <article class="showcase-intro"><span>POPULAR CHOICES</span><h3>Social growth packages</h3><p>Choose your platform, view promos, or calculate a custom amount using regular rates.</p><a href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Start an order →</a></article>
+        <a class="showcase-platform showcase-facebook" href="#service-filters"><span>f</span><div><small>FACEBOOK</small><b>Followers, reactions, views &amp; engagements</b><p>Promo packages and PH-based options available.</p></div><em>View options →</em></a>
+        <a class="showcase-platform showcase-instagram" href="#service-filters"><span>◎</span><div><small>INSTAGRAM</small><b>Followers, likes, views, saves &amp; reach</b><p>Explore promos or use regular-rate calculation.</p></div><em>View options →</em></a>
+        <a class="showcase-platform showcase-tiktok" href="#service-filters"><span>♪</span><div><small>TIKTOK</small><b>Followers, likes, views, shares &amp; saves</b><p>Multiple promo tiers for content growth.</p></div><em>View options →</em></a>
+        <a class="showcase-platform showcase-youtube" href="#service-filters"><span>▶</span><div><small>YOUTUBE</small><b>Subscribers, watch hours, views &amp; likes</b><p>Support for channels and individual videos.</p></div><em>View options →</em></a>
+        <a class="showcase-platform showcase-twitter" href="#service-filters"><span>𝕏</span><div><small>X / TWITTER</small><b>Followers, likes, views &amp; impressions</b><p>Packages for account visibility and tweets.</p></div><em>View options →</em></a>
+        <article class="showcase-calculator"><span>CUSTOM QUANTITY?</span><h3>Use the live rate calculator.</h3><p>Calculate a regular-rate estimate in your preferred currency.</p><a class="button button-primary" href="#calculator">Open calculator <b>→</b></a></article>
+        <div class="showcase-delivery"><span>ESTIMATED DELIVERY</span><b>Most social-growth orders are processed within minutes to hours.</b><a href="#process">How ordering works →</a></div>
+      </section>
+
+      <div class="service-filters" id="service-filters" aria-label="Filter services by platform">
+        <button class="active" type="button" data-service-filter="all">All promos</button>
+        <button type="button" data-service-filter="facebook">Facebook</button>
+        <button type="button" data-service-filter="instagram">Instagram</button>
+        <button type="button" data-service-filter="tiktok">TikTok</button>
+        <button type="button" data-service-filter="youtube">YouTube</button>
+        <button type="button" data-service-filter="twitter">X / Twitter</button>
+      </div>
+
+      <section class="service-directory" aria-live="polite">
+        <div><span class="directory-kicker" id="directory-platform">ALL PLATFORMS</span><h3 id="directory-title">Popular services, clearly grouped.</h3><p id="directory-description">Select a platform to see the service types available and their usual delivery window.</p></div>
+        <div class="directory-services" id="directory-services"></div>
+      </section>
+
+      <section class="service-grid promo-first-grid" aria-label="Available promo packages">
+        <article class="service-card featured" data-platform="facebook"><em class="promo-badge">BEST VALUE PROMO</em><div class="service-icon fb" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3.1h-3.1V7.92c0-.9.25-1.51 1.55-1.51H17V3.63A18.1 18.1 0 0 0 15.08 3.5c-1.9 0-3.2 1.16-3.2 3.3v1.84H9.2V12h2.68v9h2.32Z"/></svg></div><p>Facebook</p><h3>Followers & views</h3><span class="currency-price" data-php="680" data-prefix="Promo from ">Promo from ₱680</span><small class="delivery-estimate">Estimated delivery: 1–3 days</small><button data-package="facebook-packages">View promo deal <b>→</b></button></article>
+        <article class="service-card" data-platform="instagram"><em class="promo-badge">PROMO DEAL</em><div class="service-icon ig" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.35" cy="6.75" r="1" class="dot"/></svg></div><p>Instagram</p><h3>Followers, likes & views</h3><span class="currency-price" data-php="100" data-prefix="Promo from ">Promo from ₱100</span><small class="delivery-estimate">Estimated delivery: 1–3 days</small><button data-package="instagram-packages">View promo deal <b>→</b></button></article>
+        <article class="service-card" data-platform="tiktok"><em class="promo-badge">PROMO DEAL</em><div class="service-icon tt" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.45 3.5c.32 1.94 1.42 3.1 3.2 3.42v2.75c-1.15-.03-2.25-.38-3.2-1.02v5.5a5.35 5.35 0 1 1-4.63-5.3v2.9a2.58 2.58 0 1 0 1.78 2.45V3.5h2.85Z"/></svg></div><p>TikTok</p><h3>Followers, likes & views</h3><span class="currency-price" data-php="170" data-prefix="Promo from ">Promo from ₱170</span><small class="delivery-estimate">Estimated delivery: 1–3 days</small><button data-package="tiktok-packages">View promo deal <b>→</b></button></article>
+        <article class="service-card" data-platform="youtube"><em class="promo-badge">PROMO DEAL</em><div class="service-icon yt">▶</div><p>YouTube</p><h3>Subscribers, views & likes</h3><span class="currency-price" data-php="330" data-prefix="Promo from ">Promo from ₱330</span><small class="delivery-estimate">Estimated delivery: 2–5 days</small><button data-package="youtube-services">View promo deal <b>→</b></button></article>
+        <article class="service-card" data-platform="facebook"><em class="promo-badge">PROMO DEAL</em><div class="service-icon fb" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3.1h-3.1V7.92c0-.9.25-1.51 1.55-1.51H17V3.63A18.1 18.1 0 0 0 15.08 3.5c-1.9 0-3.2 1.16-3.2 3.3v1.84H9.2V12h2.68v9h2.32Z"/></svg></div><p>Facebook</p><h3>PH-based audience</h3><span class="currency-price" data-php="300" data-prefix="Promo from ">Promo from ₱300</span><small class="delivery-estimate">Estimated delivery: 1–3 days</small><button data-package="facebook-ph">View promo deal <b>→</b></button></article>
+        <article class="service-card" data-platform="facebook"><em class="promo-badge">PROMO DEAL</em><div class="service-icon fb" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3.1h-3.1V7.92c0-.9.25-1.51 1.55-1.51H17V3.63A18.1 18.1 0 0 0 15.08 3.5c-1.9 0-3.2 1.16-3.2 3.3v1.84H9.2V12h2.68v9h2.32Z"/></svg></div><p>Facebook</p><h3>Engagement boosts</h3><span class="currency-price" data-php="150" data-prefix="Promo from ">Promo from ₱150</span><small class="delivery-estimate">Estimated delivery: 1–2 days</small><button data-package="facebook-engagements">View promo deal <b>→</b></button></article>
+        <article class="service-card featured" data-platform="facebook"><em class="promo-badge">BEST VALUE PROMO</em><div class="service-icon fb" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3.1h-3.1V7.92c0-.9.25-1.51 1.55-1.51H17V3.63A18.1 18.1 0 0 0 15.08 3.5c-1.9 0-3.2 1.16-3.2 3.3v1.84H9.2V12h2.68v9h2.32Z"/></svg></div><p>Facebook</p><h3>Pages for sale</h3><span class="currency-price" data-php="850" data-prefix="Promo from ">Promo from ₱850</span><small class="delivery-estimate">Estimated handover: 1–2 days</small><button data-package="facebook-page-sale">View promo deal <b>→</b></button></article>
+        <article class="service-card featured" data-platform="twitter"><em class="promo-badge">NEW PROMO</em><div class="service-icon yt" aria-label="X / Twitter">𝕏</div><p>X / Twitter</p><h3>Followers, likes &amp; impressions</h3><span class="currency-price" data-php="170" data-prefix="Promo from ">Promo from ₱170</span><small class="delivery-estimate">Estimated delivery: minutes–hours</small><button data-package="twitter-packages">View promo deal <b>→</b></button></article>
+      </section>
+
+      <section class="website-creation" id="website-creation" aria-labelledby="website-creation-title">
+        <div class="website-creation-intro">
+          <div><p class="eyebrow">NEW SERVICE · WEBSITE CREATION</p><h2 id="website-creation-title">A website that makes your business easier to choose.</h2><p>Professionally designed, mobile-friendly websites for businesses and creators—with a clear way for customers to message, order, book, or inquire.</p></div>
+          <div class="website-creation-actions"><a class="button button-primary" href="https://m.me/smmsolutionsv2" target="_blank" rel="noreferrer">Ask about a website <span>↗</span></a><a class="text-link" href="#website-promos">View all website promos →</a></div>
+        </div>
+        <div class="website-credit-bonus" role="note"><span class="bonus-gift">✦</span><div><small>FREE BONUS WITH EVERY WEBSITE PACKAGE</small><strong>₱199 SMM Solutions Boosting Credit</strong><p>Use it for an eligible page, post, or content-boosting service after your website is launched.</p></div><a href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer">Claim your bonus →</a></div>
+        <div class="website-hero-promo">
+          <img src="assets/website-promos/websites-made-affordable.png" alt="SMM Solutions professional website packages" loading="lazy" />
+          <div><span>STARTING AT</span><strong class="currency-price" data-php="1299">₱1,299</strong><p>Creator, seller, food, beauty, and local business packages.</p><a href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer">Message to get started →</a></div>
+        </div>
+        <div class="website-package-list" id="website-promos" aria-label="Website creation promos">
+          <article><img src="assets/website-promos/online-seller.png" alt="Online Seller website package promo" loading="lazy" /><div><p>ONLINE SELLER</p><h3 class="currency-price" data-php="1499">₱1,499</h3><span>Catalog, product images & Messenger ordering</span></div></article>
+          <article><img src="assets/website-promos/creator-launch.png" alt="Creator Launch website package promo" loading="lazy" /><div><p>CREATOR LAUNCH</p><h3 class="currency-price" data-php="1299">₱1,299</h3><span>Portfolio, social links & collaboration page</span></div></article>
+          <article><img src="assets/website-promos/local-business.png" alt="Local Business website package promo" loading="lazy" /><div><p>LOCAL BUSINESS</p><h3 class="currency-price" data-php="1799">₱1,799</h3><span>Services, maps, booking & business information</span></div></article>
+          <article><img src="assets/website-promos/food-business.png" alt="Food Business website package promo" loading="lazy" /><div><p>FOOD BUSINESS</p><h3 class="currency-price" data-php="1499">₱1,499</h3><span>Digital menu, food gallery & ordering button</span></div></article>
+          <article><img src="assets/website-promos/beauty-business.png" alt="Beauty Business website package promo" loading="lazy" /><div><p>BEAUTY BUSINESS</p><h3 class="currency-price" data-php="1499">₱1,499</h3><span>Service menu, gallery & booking button</span></div></article>
+          <article class="website-features-card"><img src="assets/website-promos/features-included.png" alt="Website package features included" loading="lazy" /><div><p>EVERY PACKAGE</p><h3>Built to launch</h3><span>Hosting, mobile-ready design and Messenger integration.</span></div></article>
+        </div>
+        <section class="website-samples" id="website-samples" aria-labelledby="website-samples-title">
+          <div class="website-samples-heading"><p class="eyebrow">LIVE WEBSITE SAMPLES</p><h3 id="website-samples-title">See websites we have created.</h3><p>Open a live sample to see how a business website can look and work.</p></div>
+          <div class="website-samples-grid">
+            <a class="website-sample-card calapure-sample" href="https://calapureph.netlify.app/" target="_blank" rel="noreferrer"><span class="sample-browser"><i></i><i></i><i></i></span><span class="sample-type">PRODUCT WEBSITE</span><strong>CalaPure PH</strong><small>Visit live website <b>&nearr;</b></small></a>
+            <a class="website-sample-card promovox-sample" href="https://promovoxsolutions.netlify.app/" target="_blank" rel="noreferrer"><span class="sample-browser"><i></i><i></i><i></i></span><span class="sample-type">BUSINESS WEBSITE</span><strong>PromoVox Solutions</strong><small>Visit live website <b>&nearr;</b></small></a>
+            <a class="website-sample-card hurray-sample" href="https://novast-arch.github.io/hurraydeliveryservice/" target="_blank" rel="noreferrer"><span class="sample-browser"><i></i><i></i><i></i></span><span class="sample-type">DELIVERY SERVICE WEBSITE</span><strong>Hurray Delivery Service</strong><small>Visit live website <b>&nearr;</b></small></a>
+            <a class="website-sample-card trive-sample" href="https://trivebeautylounge.com/" target="_blank" rel="noreferrer"><span class="sample-browser"><i></i><i></i><i></i></span><span class="sample-type">BEAUTY BUSINESS WEBSITE</span><strong>Trive Beauty Lounge</strong><small>Visit live website <b>&nearr;</b></small></a>
+            <a class="website-sample-card mm-lab-sample" href="https://mmlaboratorysupplies.netlify.app/" target="_blank" rel="noreferrer"><span class="sample-browser"><i></i><i></i><i></i></span><span class="sample-type">LABORATORY SUPPLIES WEBSITE</span><strong>MM Laboratory Supplies</strong><small>Visit live website <b>&nearr;</b></small></a>
+          </div>
+        </section>
+        <p class="website-creation-note">Every package includes a custom setup using your own business details, photos, and logo. Typical delivery: 2–5 days after we receive your content.</p>
+      </section>
+
+      <section class="new-features" id="new-features" aria-labelledby="new-features-title">
+        <div class="new-features-heading"><p class="eyebrow">FREE CUSTOMER TOOLS</p><h2 id="new-features-title">Useful when you need them.</h2><p>Helpful extras, kept out of the way of ordering.</p></div>
+        <div class="new-features-grid">
+          <article class="new-feature-card qr-feature"><div class="feature-topline"><span class="feature-label">NEW FEATURE</span><span class="feature-symbol">⌁</span></div><h3>Free QR Code Maker</h3><p>Create a styled QR code for any link or text. Add a photo, character, colors, then download it as a PNG—free.</p><button class="feature-button" type="button" data-dialog="qr-maker">Create a QR code <b>→</b></button></article>
+          <article class="new-feature-card market-feature"><div class="feature-topline"><span class="feature-label">NEW FEATURE</span><span class="feature-symbol">↗</span></div><h3>Community Marketplace</h3><p>Buy, sell, post for hire, or find what you need. Listings are reviewed before they are shown to the community.</p><a class="feature-button" href="https://smm-solutions-marketplace-b9888.web.app">Visit marketplace <b>→</b></a></article>
+          <article class="new-feature-card fix-feature"><div class="feature-topline"><span class="feature-label">NEW FEATURE</span><span class="feature-symbol">⌁</span></div><h3>Free Link Fixer</h3><p>Clean copied social links before ordering. It removes common tracking parts and helps you use the right public link.</p><button class="feature-button" type="button" data-dialog="link-fixer">Fix a link <b>→</b></button></article>
+        </div>
+      </section>
+
+      <section class="process" id="how-it-works"><div class="process-heading"><p class="eyebrow">HOW TO AVAIL</p><h2>Three easy steps.</h2></div><ol><li><strong>01</strong><div><h3>Pick a package</h3><p>Choose the platform and package that fits your goal.</p></div></li><li><strong>02</strong><div><h3>Message our page</h3><p>Send your order details and the public link to the profile, account, post, or video to be boosted.</p></div></li><li><strong>03</strong><div><h3>Pay & relax</h3><p>We’ll confirm your order and get your boost underway.</p></div></li></ol></section>
+
+      <section class="about" id="about"><div><p class="eyebrow">WHY SMM SOLUTIONS</p><h2>Proven safe, legit growth support.</h2><p>We’re here to help you build social proof and strengthen your online presence—without making ordering complicated. To process boosting services, we only ask for the public link to your profile, account, post, or video. We never need your password or login details.</p><a href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer" class="text-link">Talk to us on Facebook →</a></div><div class="values"><div><b>100%</b><span>Safe & secure</span></div><div><b>Fast</b><span>Delivery</span></div><div><b>Real</b><span>Friendly support</span></div></div></section>
+
+      <section class="client-reviews" id="reviews" aria-labelledby="reviews-title">
+        <div class="reviews-heading"><p class="eyebrow">CLIENT FEEDBACK</p><h2 id="reviews-title">Trusted by clients who wanted to grow.</h2><p>Real recommendations shared with permission. Client surnames are shown as initials for privacy.</p></div>
+        <div class="reviews-grid">
+          <article class="review-card"><div class="review-top"><span class="review-service">FOLLOWER GROWTH</span><span aria-label="Five star rating">★★★★★</span></div><blockquote>“From 0 followers to 1K! Thank you boss! Sa uulitin. Legit pa rin as before!”</blockquote><footer><b>Vhan S.</b><small>Followers growth service</small></footer></article>
+          <article class="review-card"><div class="review-top"><span class="review-service">1M VIDEO VIEWS</span><span aria-label="Five star rating">★★★★★</span></div><blockquote>“If you’re looking for a trusted boosting service, ito na yun! Affordable rates, mabilis kausap, at quality ang results. Sulit ang bayad.”</blockquote><footer><b>Hulio A.</b><small>1M video views service</small></footer></article>
+          <article class="review-card review-card-highlight"><div class="review-top"><span class="review-service">10K FOLLOWERS + 300K VIEWS</span><span aria-label="Five star rating">★★★★★</span></div><blockquote>“Sobrang legit talaga. More blessings to come. Namonetize rin sa wakas!”</blockquote><footer><b>AJ P.</b><small>Followers and video views package</small></footer></article>
+        </div>
+        <a class="reviews-link" href="https://www.facebook.com/share/p/19AQ931SJP/" target="_blank" rel="noreferrer">See the recommendation on Facebook <b>→</b></a>
+      </section>
+
+      <section class="faq" id="faq"><div><p class="eyebrow">FAQ</p><h2>Quick answers.</h2><p>Tap a question to see the details.</p></div><div class="faq-list"><details><summary>What information do you need for boosting?</summary><p>Only the public link to the profile, account, post, or video. Never share passwords or login details.</p></details><details><summary>How do I know my order is being processed?</summary><p>Use your Order ID to request a status update. If you added your optional email to the order form, you can also receive status emails.</p></details><details><summary>How can I pay?</summary><p>GCash and Maribank are accepted. Follow the payment instructions in the order form and upload your receipt if you have paid.</p></details><details><summary>Why choose a promo package?</summary><p>Promo packages group popular services into a better-value option. For a custom amount, use the calculator above for the regular-rate estimate.</p></details></div></section>
+
+      <section class="contact"><p class="eyebrow">READY WHEN YOU ARE</p><h2>Let’s get your page moving.</h2><p>Submit your order online with your public link and preferred package. We’ll confirm availability, payment details, and support through Facebook Messenger.</p><a class="button button-light" href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Start your order <span>↗</span></a></section>
+    </main>
+    <footer><a class="brand" href="#top"><span class="brand-mark">↗</span><span>SMM <b>Solutions</b><small>by Pabs Rivera</small></span></a><p>© <span id="year"></span> SMM Solutions by Pabs Rivera</p><div class="footer-links"><button type="button" data-dialog="order-lookup">Track order</button><button type="button" data-dialog="referral">Referral</button><button type="button" data-dialog="qr-maker">QR maker</button><a href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer">Facebook ↗</a></div></footer>
+
+    <button class="chat-launcher" aria-label="Chat with SMM Solutions" aria-expanded="false"><span>✦</span><em>Chat with us</em></button>
+    <section class="chat-widget" aria-label="SMM Solutions chat assistant" aria-hidden="true"><header><div><span class="chat-avatar">↗</span><div><b>SMM AI Assistant</b><small>AI replies in a few seconds</small></div></div><button class="chat-close" aria-label="Close chat">×</button></header><div class="chat-messages" aria-live="polite"><div class="message bot">Hi! I’m the SMM Solutions AI assistant. How can I help you today?</div><div class="message bot">For boosting, we only need the public link to your profile, account, post, or video—never your password or login details.</div></div><div class="quick-replies"><button data-question="Is this safe and what information do you need?">Safe & legit</button><button data-question="What services do you offer?">Services</button><button data-question="How do I order?">How to order</button><button data-question="What are the payment options?">Payment</button></div><form class="chat-form"><input aria-label="Type a message" placeholder="Type your question..." autocomplete="off" /><button aria-label="Send message">↑</button></form></section>
+    <dialog class="package-modal"><button class="close-modal" aria-label="Close package viewer">×</button><img src="" alt="Service package list" /><a class="button button-primary" href="https://www.facebook.com/smmsolutionsv2/" target="_blank" rel="noreferrer">Ask about this package →</a></dialog>
+    <dialog class="utility-modal" id="order-lookup"><button class="close-utility" aria-label="Close order tracking">×</button><p class="eyebrow">ORDER TRACKING</p><h2>Check your order status.</h2><p>Enter your Order ID and we’ll open a Messenger message for SMM Solutions. For privacy, status details are confirmed directly with the account owner.</p><form class="lookup-form"><label>Order ID <input name="order-id" placeholder="Example: SMM-20260713-0001" required /></label><button class="button button-primary" type="submit">Check via Messenger <span>→</span></button></form></dialog>
+    <dialog class="utility-modal" id="referral"><button class="close-utility" aria-label="Close referral form">×</button><p class="eyebrow">REFER A FRIEND</p><h2>Share SMM Solutions.</h2><p>Send us your name and your friend’s name through Messenger. We’ll confirm any available referral bonus with you.</p><form class="referral-form"><label>Your name <input name="referrer" required /></label><label>Friend’s name <input name="friend" required /></label><button class="button button-primary" type="submit">Send referral <span>→</span></button></form></dialog>
+    <dialog class="utility-modal qr-modal" id="qr-maker"><button class="close-utility" aria-label="Close QR code maker">×</button><p class="eyebrow">FREE QR CODE MAKER</p><h2>Make a branded QR code.</h2><p>Everything is made in your browser. Your link and image are never uploaded. Keep the centre image small so the QR remains easy to scan.</p><div class="qr-maker-layout"><form class="qr-form"><label>Link or text <textarea name="qr-text" rows="3">https://www.facebook.com/smmsolutionsv2/</textarea></label><div class="color-row"><label>QR color <input name="dark-color" type="color" value="#071f4d" /></label><label>Background <input name="light-color" type="color" value="#ffffff" /></label></div><label>Built-in character <select name="qr-character"><option value="">No character</option><option value="★">Star</option><option value="♥">Heart</option><option value="✦">Sparkle</option><option value="☺">Smile</option><option value="♛">Crown</option></select></label><label>Add your photo or character <input name="qr-logo" type="file" accept="image/*" /></label><button class="button button-primary" type="submit">Create QR code <span>→</span></button></form><div class="qr-preview"><div id="qr-output" aria-label="QR code preview"></div><button class="download-qr" type="button" disabled>Download PNG</button></div></div></dialog>
+    <dialog class="utility-modal link-fixer-modal" id="link-fixer"><button class="close-utility" aria-label="Close link fixer">×</button><p class="eyebrow">FREE LINK FIXER</p><h2>Clean or shorten your link.</h2><p>Paste a public Facebook, Instagram, TikTok, YouTube, or website link. Cleaning happens in your browser. Shortening sends only the link you choose to the free shortening service.</p><form class="link-fixer-form" id="link-fixer-form"><label>Your link <input name="link" type="text" autocomplete="url" placeholder="Paste your profile, post, or video link" required /></label><button class="button button-primary" type="submit">Fix my link <span>→</span></button></form><div class="link-fixer-result" id="link-fixer-result" hidden><p class="link-status" id="link-status"></p><label>Clean link <input class="clean-link" id="clean-link" type="text" readonly /></label><button class="copy-clean-link" id="copy-clean-link" type="button">Copy clean link</button><button class="shorten-clean-link" id="shorten-clean-link" type="button">Shorten this link for free</button><div class="short-link-result" id="short-link-result" hidden><label>Short link <input class="short-link" id="short-link" type="text" readonly /></label><button class="copy-short-link" id="copy-short-link" type="button">Copy short link</button></div><p class="link-note" id="link-note"></p></div></dialog>
+    <a class="messenger-float" href="https://m.me/smmsolutionsv2" target="_blank" rel="noreferrer" aria-label="Message SMM Solutions on Facebook Messenger">M<span>Message us</span></a>
+    <a class="mobile-order" href="https://docs.google.com/forms/d/e/1FAIpQLScyaMF0jMytzyNUKlN-bSIbnXONpPikQS47NKEXNJ58gSCv9g/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Order now <span>→</span></a>
+    <style>.chat-launcher{position:fixed;right:24px;bottom:24px;z-index:4;border:0;background:#071f4d;color:#fff;border-radius:100px;padding:13px 18px 13px 13px;display:flex;align-items:center;gap:9px;box-shadow:0 12px 28px #071f4d50;cursor:pointer;font:700 13px "DM Sans",sans-serif}.chat-launcher span,.chat-avatar{background:#2389ff;border-radius:50%;display:grid;place-items:center;width:30px;height:30px;font-size:18px}.chat-launcher em{font-style:normal}.chat-widget{position:fixed;z-index:5;right:24px;bottom:86px;width:min(370px,calc(100vw - 32px));background:#fff;border-radius:17px;box-shadow:0 22px 60px #071f4d42;overflow:hidden;opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:.2s}.chat-widget.open{opacity:1;transform:none;pointer-events:auto}.chat-widget header{background:#071f4d;color:#fff;padding:18px;display:flex;justify-content:space-between;align-items:center}.chat-widget header>div{display:flex;align-items:center;gap:10px}.chat-widget header b{font:700 14px "Plus Jakarta Sans",sans-serif;display:block}.chat-widget header small{font-size:11px;color:#bad6ff}.chat-close{border:0;background:transparent;color:#fff;font-size:25px;cursor:pointer}.chat-messages{height:220px;overflow-y:auto;padding:17px;background:#f6f9ff;display:flex;flex-direction:column;gap:10px}.message{max-width:85%;padding:11px 13px;border-radius:13px;font-size:13px;line-height:1.45}.message.bot{background:#e4f0ff;color:#18376d;border-bottom-left-radius:3px}.message.user{align-self:end;background:#146fe0;color:#fff;border-bottom-right-radius:3px}.quick-replies{padding:10px 14px;display:flex;gap:7px;overflow-x:auto}.quick-replies button{white-space:nowrap;border:1px solid #c8dcf7;color:#1169d5;background:#fff;padding:7px 9px;border-radius:100px;font:600 11px "DM Sans",sans-serif;cursor:pointer}.chat-form{padding:11px 13px;border-top:1px solid #e4ebf5;display:flex;gap:8px}.chat-form input{border:0;outline:0;flex:1;font:13px "DM Sans",sans-serif}.chat-form button{width:31px;height:31px;border:0;border-radius:50%;background:#146fe0;color:#fff;font-size:18px;cursor:pointer}@media(max-width:760px){.chat-launcher{right:16px;bottom:16px}.chat-widget{right:16px;bottom:78px}}</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" referrerpolicy="no-referrer"></script>
+    <script src="calculator.js"></script>
+    <script src="currency.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="ai-chat.js"></script>
+    <script src="extras.js"></script>
+    <script src="delivery-times.js"></script>
+    <script>
+      (() => {
+        const dialog = document.querySelector('#link-fixer');
+        const form = document.querySelector('#link-fixer-form');
+        const resultBox = document.querySelector('#link-fixer-result');
+        const output = document.querySelector('#clean-link');
+        const status = document.querySelector('#link-status');
+        const note = document.querySelector('#link-note');
+        const shortResult = document.querySelector('#short-link-result');
+        const shortLink = document.querySelector('#short-link');
+        const shortenButton = document.querySelector('#shorten-clean-link');
+        document.querySelectorAll('[data-dialog="link-fixer"]').forEach(button => button.addEventListener('click', () => { if (!dialog.open) dialog.showModal(); }));
+        dialog.querySelector('.close-utility').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+        const copy = async (field, button, label) => { try { await navigator.clipboard.writeText(field.value); } catch { field.select(); document.execCommand('copy'); } button.textContent = 'Copied!'; setTimeout(() => button.textContent = label, 1800); };
+        const fix = value => {
+          let text = value.trim().replace(/[“”"']/g, '').replace(/\s+/g, '');
+          if (!text) throw new Error('Please paste a link first.');
+          if (!/^[a-z][a-z\d+.-]*:\/\//i.test(text)) text = `https://${text}`;
+          const url = new URL(text);
+          if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Please use a regular website or social-media link.');
+          const aliases = { 'm.facebook.com': 'www.facebook.com', 'web.facebook.com': 'www.facebook.com', 'fb.com': 'www.facebook.com', 'm.instagram.com': 'www.instagram.com', 'm.tiktok.com': 'www.tiktok.com' };
+          url.hostname = aliases[url.hostname.toLowerCase()] || url.hostname.toLowerCase();
+          [...url.searchParams.keys()].forEach(key => { if (/^(utm_|fbclid$|gclid$|igsh|igshid|si$|mibextid$|ref$|source$)/i.test(key)) url.searchParams.delete(key); });
+          const platform = url.hostname.includes('facebook.com') ? 'Facebook' : url.hostname.includes('instagram.com') ? 'Instagram' : url.hostname.includes('tiktok.com') ? 'TikTok' : url.hostname.includes('youtube.com') ? 'YouTube' : 'Website';
+          return { link: url.toString(), platform, share: url.hostname.includes('facebook.com') && /^\/share/i.test(url.pathname) };
+        };
+        const shorten = url => new Promise((resolve, reject) => {
+          const callback = `isgd_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+          const script = document.createElement('script');
+          const timeout = setTimeout(() => finish(new Error('The shortening service took too long. Please try again.')), 12000);
+          function finish(error, data) { clearTimeout(timeout); delete window[callback]; script.remove(); error ? reject(error) : resolve(data); }
+          window[callback] = data => data?.shorturl ? finish(null, data.shorturl) : finish(new Error(data?.errormessage || 'The shortening service could not create a link.'));
+          script.src = `https://is.gd/create.php?format=json&callback=${callback}&url=${encodeURIComponent(url)}`;
+          script.onerror = () => finish(new Error('The shortening service is unavailable right now.'));
+          document.head.append(script);
+        });
+        form.addEventListener('submit', event => {
+          event.preventDefault(); shortResult.hidden = true; shortLink.value = '';
+          try { const fixed = fix(form.elements.link.value); output.value = fixed.link; status.textContent = `${fixed.platform} link cleaned and ready to copy.`; note.textContent = fixed.share ? 'This looks like a Facebook share link. For boosting, use the direct profile, page, post, or video link whenever possible.' : 'Check that this opens the exact profile, post, account, or video you want to use before ordering.'; }
+          catch (error) { output.value = ''; status.textContent = error.message; note.textContent = 'Try copying the full link again from the social-media app or browser.'; }
+          resultBox.hidden = false;
+        });
+        document.querySelector('#copy-clean-link').addEventListener('click', () => output.value && copy(output, document.querySelector('#copy-clean-link'), 'Copy clean link'));
+        shortenButton.addEventListener('click', async () => { if (!output.value) return; shortenButton.disabled = true; shortenButton.textContent = 'Creating short link…'; try { shortLink.value = await shorten(output.value); shortResult.hidden = false; } catch (error) { note.textContent = error.message; } finally { shortenButton.disabled = false; shortenButton.textContent = 'Shorten this link for free'; } });
+        document.querySelector('#copy-short-link').addEventListener('click', () => shortLink.value && copy(shortLink, document.querySelector('#copy-short-link'), 'Copy short link'));
+      })();
+    </script>
+    <script>
+      (() => {
+        const grid = document.querySelector('.new-features-grid');
+        if (!grid) return;
+        const heading = document.querySelector('.new-features-heading > p:not(.eyebrow)');
+        if (heading) heading.textContent = 'Explore four free tools from SMM Solutions—simple, useful, and ready whenever you need them.';
+        const style = document.createElement('style');
+        style.textContent = '.new-features-grid{grid-template-columns:repeat(4,1fr)}.link-card-feature{order:1;background:linear-gradient(145deg,#f6efff,#ede5ff);border-color:#d8bafc}.link-card-feature:after{background:#c9a8ff77}.link-card-feature .feature-symbol{background:#e8d8ff;color:#6831b3}.link-card-feature .feature-label{color:#6930b3}.link-card-feature .feature-button{border-color:#d8bafc;color:#5f259f}@media(max-width:760px){.new-features-grid{grid-template-columns:1fr}}.link-card-modal{width:min(980px,calc(100vw - 32px));max-height:92vh;overflow:auto}.link-card-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;margin-top:18px}.link-card-form{display:grid;gap:11px}.link-card-form label{display:grid;gap:6px;color:#596983;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px}.link-card-form input,.link-card-form textarea{border:1px solid #d8e4f1;border-radius:8px;padding:11px;color:#10234c;font:500 14px "DM Sans",sans-serif}.link-card-form textarea{min-height:70px;resize:vertical}.link-card-form .button{border:0;width:100%;cursor:pointer}.link-card-preview{padding:12px;border:1px solid #d9e5f3;border-radius:12px;background:#f5f9ff}.link-card-preview canvas{display:block;width:100%;height:auto;border-radius:8px;background:#071f4d}.download-card{width:100%;margin-top:10px;padding:11px;border:1px solid #b99af1;border-radius:8px;background:#fff;color:#6930b3;font:700 12px "DM Sans",sans-serif;cursor:pointer}@media(max-width:760px){.link-card-layout{grid-template-columns:1fr}}';
+        document.head.append(style);
+
+        const card = document.createElement('article');
+        card.className = 'new-feature-card link-card-feature';
+ card.innerHTML = '<div class="feature-topline"><span class="feature-label">NEW FEATURE</span><span class="feature-symbol">▣</span></div><h3>Shareable Link Card Maker</h3><p>Create a secure shareable card with an image, social preview, destination link, and tracked clicks.</p><button class="feature-button" type="button">Create a card <b>→</b></button>';
+        grid.append(card);
+
+        const dialog = document.createElement('dialog');
+        dialog.className = 'utility-modal link-card-modal';
+        dialog.innerHTML = '<button class="close-utility" aria-label="Close card maker">×</button><p class="eyebrow">FREE LINK CARD MAKER</p><h2>Create a share-ready card.</h2><p>Make a polished image card for your public link. Everything stays in your browser; download the card when you are happy with it.</p><div class="link-card-layout"><form class="link-card-form"><label>Upload image <input name="image" type="file" accept="image/png,image/jpeg,image/webp" /></label><label>Destination link <input name="url" type="url" placeholder="https://example.com" /></label><label>Title <input name="title" maxlength="62" value="Check this out" required /></label><label>Description <textarea name="description" maxlength="150">Tap the link to learn more.</textarea></label><button class="button button-primary" type="submit">Create my card <span>→</span></button></form><div class="link-card-preview"><canvas width="1200" height="630" aria-label="Link card preview"></canvas><button class="download-card" type="button">Download PNG</button></div></div>';
+        document.body.append(dialog);
+        const form = dialog.querySelector('form');
+        const canvas = dialog.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let image = null;
+        const draw = () => {
+          const data = new FormData(form), title = String(data.get('title') || 'Check this out'), description = String(data.get('description') || ''), urlText = String(data.get('url') || 'your-link.com');
+          let host = urlText.replace(/^https?:\/\//i, '').split('/')[0] || 'your-link.com';
+          ctx.fillStyle = '#071f4d'; ctx.fillRect(0, 0, 1200, 630);
+          ctx.fillStyle = '#1569dd'; ctx.fillRect(0, 0, 22, 630);
+          if (image) { const scale = Math.max(540 / image.width, 630 / image.height); const w = image.width * scale, h = image.height * scale; ctx.drawImage(image, 0, (630 - h) / 2, w, h); ctx.fillStyle = '#071f4d99'; ctx.fillRect(0, 0, 540, 630); }
+          else { const gradient = ctx.createLinearGradient(0, 0, 540, 630); gradient.addColorStop(0, '#2a9dff'); gradient.addColorStop(1, '#7040bb'); ctx.fillStyle = gradient; ctx.fillRect(0, 0, 540, 630); }
+          ctx.fillStyle = '#e9f5ff'; ctx.font = '700 24px Arial'; ctx.fillText('SMM SOLUTIONS • LINK CARD', 600, 105);
+          const wrap = (text, x, y, maxWidth, lineHeight, font, color, maxLines) => { ctx.font = font; ctx.fillStyle = color; const words = text.split(/\s+/); let line = '', lines = 0; words.forEach(word => { const next = `${line}${line ? ' ' : ''}${word}`; if (ctx.measureText(next).width > maxWidth && line && lines < maxLines) { ctx.fillText(line, x, y + lines * lineHeight); line = word; lines++; } else line = next; }); if (line && lines < maxLines) ctx.fillText(line, x, y + lines * lineHeight); };
+          wrap(title, 600, 190, 500, 58, '700 52px Arial', '#ffffff', 2);
+          wrap(description, 600, 335, 500, 32, '400 25px Arial', '#c6dafa', 3);
+          ctx.fillStyle = '#ffffff'; ctx.fillRect(600, 520, 350, 58); ctx.fillStyle = '#0c4f9e'; ctx.font = '700 23px Arial'; ctx.fillText(host, 625, 558);
+        };
+ card.querySelector('button').addEventListener('click', () => { window.location.href = 'https://smm-marketplace-3a2a8.web.app/card-maker'; });
+        dialog.querySelector('.close-utility').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+        form.elements.image.addEventListener('change', event => { const file = event.target.files[0]; if (!file) { image = null; draw(); return; } const reader = new FileReader(); reader.onload = () => { image = new Image(); image.onload = draw; image.src = reader.result; }; reader.readAsDataURL(file); });
+        form.addEventListener('submit', event => { event.preventDefault(); draw(); });
+        dialog.querySelector('.download-card').addEventListener('click', () => { draw(); const link = document.createElement('a'); link.download = 'smm-solutions-link-card.png'; link.href = canvas.toDataURL('image/png'); link.click(); });
+      })();
+    </script>
+    <script>
+      (() => {
+        const websiteLink = document.querySelector('.website-nav-link');
+        if (!websiteLink || document.querySelector('.samples-nav-link')) return;
+        const samplesLink = document.createElement('a');
+        samplesLink.className = 'samples-nav-link';
+        samplesLink.href = '#website-samples';
+        samplesLink.textContent = 'Samples';
+        websiteLink.insertAdjacentElement('afterend', samplesLink);
+      })();
+    </script>
+    <script src="qr.js"></script>
+    <script>
+      (() => {
+        const list = document.querySelector('.website-package-list');
+        if (!list || list.closest('.website-package-carousel')) return;
+        const carouselStyle = document.createElement('style');
+        carouselStyle.textContent = '.website-package-carousel{position:relative;margin-top:14px;padding:0 42px}.website-carousel-viewport{overflow:hidden;padding:4px}.website-package-carousel .website-package-list{display:flex;gap:14px;margin:0;transition:transform .55s cubic-bezier(.22,.8,.25,1);will-change:transform}.website-package-carousel .website-package-list article{flex:0 0 calc((100% - 28px)/3);min-width:0}.website-carousel-arrow{position:absolute;z-index:2;top:50%;display:grid;width:32px;height:32px;place-items:center;border:1px solid #bdd4f0;border-radius:50%;background:#fff;color:#0d4f9e;font-size:20px;line-height:1;cursor:pointer;box-shadow:0 7px 16px #113b6e24;transform:translateY(-50%)}.website-carousel-prev{left:0}.website-carousel-next{right:0}.website-carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:15px}.website-carousel-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:#bfd0e8;cursor:pointer}.website-carousel-dot.active{width:22px;background:#1265cf}@media(max-width:760px){.website-package-carousel{padding:0 34px}.website-package-carousel .website-package-list article{flex-basis:100%}.website-carousel-arrow{width:28px;height:28px}}';
+        document.head.append(carouselStyle);
+
+        const carousel = document.createElement('div');
+        carousel.className = 'website-package-carousel';
+        carousel.setAttribute('aria-label', 'Website package carousel');
+        const viewport = document.createElement('div');
+        viewport.className = 'website-carousel-viewport';
+        const previous = document.createElement('button');
+        previous.className = 'website-carousel-arrow website-carousel-prev';
+        previous.type = 'button'; previous.setAttribute('aria-label', 'Previous package'); previous.innerHTML = '&#8249;';
+        const next = document.createElement('button');
+        next.className = 'website-carousel-arrow website-carousel-next';
+        next.type = 'button'; next.setAttribute('aria-label', 'Next package'); next.innerHTML = '&#8250;';
+        const dots = document.createElement('div');
+        dots.className = 'website-carousel-dots'; dots.setAttribute('aria-label', 'Choose package slide');
+        list.before(carousel); carousel.append(previous, viewport, next, dots); viewport.append(list);
+
+        const cards = Array.from(list.children); let index = 0; let timer; let touchStart = 0;
+        const visible = () => window.innerWidth <= 760 ? 1 : window.innerWidth <= 1050 ? 2 : 3;
+        const pages = () => Math.max(1, cards.length - visible() + 1);
+        const drawDots = () => {
+          dots.innerHTML = '';
+          for (let i = 0; i < pages(); i++) { const dot = document.createElement('button'); dot.className = 'website-carousel-dot' + (i === index ? ' active' : ''); dot.type = 'button'; dot.setAttribute('aria-label', `Show package ${i + 1}`); dot.addEventListener('click', () => { index = i; update(); restart(); }); dots.append(dot); }
+        };
+        const update = () => { index = Math.max(0, Math.min(index, pages() - 1)); const first = cards[0]; const gap = parseFloat(getComputedStyle(list).gap) || 14; list.style.transform = `translateX(-${index * (first.offsetWidth + gap)}px)`; drawDots(); };
+        const restart = () => { clearInterval(timer); timer = setInterval(() => { index = (index + 1) % pages(); update(); }, 10000); };
+        previous.addEventListener('click', () => { index = (index - 1 + pages()) % pages(); update(); restart(); });
+        next.addEventListener('click', () => { index = (index + 1) % pages(); update(); restart(); });
+        viewport.addEventListener('touchstart', event => { touchStart = event.changedTouches[0].screenX; }, {passive:true});
+        viewport.addEventListener('touchend', event => { const distance = event.changedTouches[0].screenX - touchStart; if (Math.abs(distance) > 36) { index = distance < 0 ? (index + 1) % pages() : (index - 1 + pages()) % pages(); update(); restart(); } }, {passive:true});
+        window.addEventListener('resize', update); update(); restart();
+
+        const widget = document.createElement('aside');
+        widget.className = 'best-seller-widget';
+        widget.innerHTML = '<div class="best-seller-widget-top"><span>POPULAR RIGHT NOW</span><button class="best-seller-widget-close" type="button" aria-label="Close best sellers">×</button></div><div class="best-seller-widget-body"><b>Our Best Seller Services</b><p>Facebook Followers, TikTok Views, Instagram Likes, and website creation packages.</p><a href="#services">View popular services <strong>→</strong></a></div>';
+        document.body.append(widget);
+        widget.querySelector('.best-seller-widget-close').addEventListener('click', () => widget.remove());
+      })();
+    </script>
   </body>
 </html>

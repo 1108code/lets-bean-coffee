@@ -89,8 +89,8 @@ const defaultContent: CmsContent = {
   privateLabelCta: "INQUIRE FOR DETAILS",
   privatePrimaryCta: "INQUIRE NOW",
   privateSecondaryCta: "MESSAGE US",
-  reviewsEyebrow: "CUSTOMER REVIEWS",
-  reviewsHeading: "CUSTOMER REVIEWS COMING SOON",
+  reviewsEyebrow: "Customer Reviews",
+  reviewsHeading: "Customer Reviews Coming Soon",
   reviewsCopy:
     "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
   reviewsCta: "VIEW FACEBOOK PAGE",

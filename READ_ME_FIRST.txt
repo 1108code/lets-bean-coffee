@@ -3,7 +3,8 @@
 Replace these exact files in your GitHub repository:
 
 1. app/page.tsx
-   - Restores public reviews section and adds subtle coming-soon state
+   - Restores public reviews section
+   - Automatically changes review heading/copy once real CMS reviews are added
    - Adds subtle footer credit line
 
 2. app/globals.css
@@ -11,6 +12,7 @@ Replace these exact files in your GitHub repository:
 
 3. app/cms/page.tsx
    - Adds per-section CMS quick guides/manual notes
+   - Updates default review heading capitalization
 
 4. public/favicon.svg
    - Replaces the generic blue browser tab icon with Let's Bean Coffee branding

@@ -133,8 +133,8 @@ const defaultContent: SiteContent = {
   privateLabelCta: "INQUIRE FOR DETAILS",
   privatePrimaryCta: "INQUIRE NOW",
   privateSecondaryCta: "MESSAGE US",
-  reviewsEyebrow: "CUSTOMER REVIEWS",
-  reviewsHeading: "CUSTOMER REVIEWS COMING SOON",
+  reviewsEyebrow: "Customer Reviews",
+  reviewsHeading: "Customer Reviews Coming Soon",
   reviewsCopy:
     "This area is reserved for real guest photos and reviews. It will be updated through the CMS once customer feedback is ready.",
   reviewsCta: "VIEW FACEBOOK PAGE",
@@ -434,6 +434,14 @@ export default function Home() {
   const hasPublicReviews = activeReviews.some(
     (review) => !unavailableReviewTitles.has(review.title),
   );
+  const reviewsHeading =
+    hasPublicReviews && content.reviewsHeading === defaultContent.reviewsHeading
+      ? "Kind Words from Our Guests"
+      : content.reviewsHeading;
+  const reviewsCopy =
+    hasPublicReviews && content.reviewsCopy === defaultContent.reviewsCopy
+      ? "Real stories, favorite orders, and cafe moments shared by the people who make Let's Bean Coffee feel like home."
+      : content.reviewsCopy;
 
   return (
     <main>
@@ -568,8 +576,8 @@ export default function Home() {
       <section className="reviews-section" aria-labelledby="reviews-heading">
         <div className="reviews-copy">
           <p className="eyebrow dark">{content.reviewsEyebrow}</p>
-          <h2 id="reviews-heading">{content.reviewsHeading}</h2>
-          <p>{content.reviewsCopy}</p>
+          <h2 id="reviews-heading">{reviewsHeading}</h2>
+          <p>{reviewsCopy}</p>
           <a className="review-link" href={content.facebook} target="_blank" rel="noreferrer">
             {content.reviewsCta} <ButtonIcon type="chat" />
           </a>

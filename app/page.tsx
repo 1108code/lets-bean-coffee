@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { assetPath } from "./asset-path";
 
 const messengerUrl = "https://m.me/689891387533123";
 const address =
-  "1st Floor Anest Tower Lopez Avenue Batong Malake, Los BaÃ±os, Philippines";
+  "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Philippines";
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
 const navItems = [
@@ -140,13 +140,13 @@ const defaultContent: SiteContent = {
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
   orderHeading: "Let Us Prepare Something for You",
-  paymentIntro: "Accepted Payments: Cash Â· Bank Transfer Â· E-wallets",
+  paymentIntro: "Accepted Payments: Cash · Bank Transfer · E-wallets",
   footerLine: "Authentic Pours. Unfiltered Vibes.",
-  copyright: "Â© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
+  copyright: "© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
   email: "letsbean.cafe@gmail.com",
   mobileNumber: "09568167071",
   landline: "(049) 536-2552",
-  address: "1st Floor Anest Tower Lopez Avenue Batong Malake, Los BaÃ±os, Laguna, Philippines",
+  address: "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Laguna, Philippines",
   weekdayLabel: "Monday-Friday",
   weekdayHours: "10:00 AM - 10:00 PM",
   weekendLabel: "Saturday-Sunday",
@@ -536,7 +536,7 @@ export default function Home() {
           <p className="eyebrow dark">{content.aboutEyebrow}</p>
           <h2>{content.aboutHeading}</h2>
           <p>{content.aboutCopy}</p>
-          <div className="signature">Letâ€™s Bean Coffee â™¥</div>
+          <div className="signature">Let&apos;s Bean Coffee ♥</div>
         </div>
         <img
           className="about-image"
@@ -605,8 +605,8 @@ export default function Home() {
             </div>
             <article>
               <span>Coming Soon</span>
-              <h3>Customer stories are being gathered</h3>
-              <p>Real guest reviews and cafe moments will be shared here once approved by the client.</p>
+              <h3>More guest stories soon</h3>
+              <p>Real reviews and cafe moments will be shared here as our community grows.</p>
             </article>
           </div>
         )}

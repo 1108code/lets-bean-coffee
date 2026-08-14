@@ -3,8 +3,9 @@
 Replace these exact files in your GitHub repository:
 
 1. app/page.tsx
-   - Restores public reviews section
-   - Automatically changes review heading/copy once real CMS reviews are added
+   - Fixes text encoding for Let's Bean Coffee signature, Los Baños, copyright, and payment dot
+   - Updates public reviews wording so it does not mention client approval
+   - Restores public reviews section and automatic real-review wording
    - Adds subtle footer credit line
 
 2. app/globals.css
@@ -22,6 +23,9 @@ Replace these exact files in your GitHub repository:
 
 6. netlify/functions/cms.cjs
    - Keeps the CMS publish diagnostics/fix
+
+7. package.json and tests/encoding-guard.mjs
+   - Adds npm run test:encoding to prevent mojibake/encoding errors from returning
 
 After uploading/replacing these files in GitHub, Netlify will auto-deploy.
 Do not upload node_modules.

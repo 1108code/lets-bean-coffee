@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { assetPath } from "./asset-path";
 
 const messengerUrl = "https://m.me/689891387533123";
 const address =
-  "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Philippines";
+  "1st Floor Anest Tower Lopez Avenue Batong Malake, Los BaÃ±os, Philippines";
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
 const navItems = [
@@ -140,13 +140,13 @@ const defaultContent: SiteContent = {
   reviewsCta: "VIEW FACEBOOK PAGE",
   orderEyebrow: "ORDER / INQUIRY",
   orderHeading: "Let Us Prepare Something for You",
-  paymentIntro: "Accepted Payments: Cash · Bank Transfer · E-wallets",
+  paymentIntro: "Accepted Payments: Cash Â· Bank Transfer Â· E-wallets",
   footerLine: "Authentic Pours. Unfiltered Vibes.",
-  copyright: "© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
+  copyright: "Â© 2026 LET'S BEAN COFFEE. ALL RIGHTS RESERVED.",
   email: "letsbean.cafe@gmail.com",
   mobileNumber: "09568167071",
   landline: "(049) 536-2552",
-  address: "1st Floor Anest Tower Lopez Avenue Batong Malake, Los Baños, Laguna, Philippines",
+  address: "1st Floor Anest Tower Lopez Avenue Batong Malake, Los BaÃ±os, Laguna, Philippines",
   weekdayLabel: "Monday-Friday",
   weekdayHours: "10:00 AM - 10:00 PM",
   weekendLabel: "Saturday-Sunday",
@@ -528,7 +528,7 @@ export default function Home() {
           <p className="eyebrow dark">{content.aboutEyebrow}</p>
           <h2>{content.aboutHeading}</h2>
           <p>{content.aboutCopy}</p>
-          <div className="signature">Let’s Bean Coffee ♥</div>
+          <div className="signature">Letâ€™s Bean Coffee â™¥</div>
         </div>
         <img
           className="about-image"
@@ -565,7 +565,6 @@ export default function Home() {
         </div>
       </section>
 
-      {hasPublicReviews && (
       <section className="reviews-section" aria-labelledby="reviews-heading">
         <div className="reviews-copy">
           <p className="eyebrow dark">{content.reviewsEyebrow}</p>
@@ -575,23 +574,35 @@ export default function Home() {
             {content.reviewsCta} <ButtonIcon type="chat" />
           </a>
         </div>
-        <div className="review-cards" aria-label="Customer review placeholders">
-          {activeReviews.map((review, index) => (
-            <article className="review-card-rotator" key={`${review.title}-${index}`}>
-              <div className="review-card-face review-text-face">
-                <span className="review-status">Unavailable</span>
-                <h3>{review.title}</h3>
-                <p>“{review.body}”</p>
-              </div>
-              <div className="review-card-face review-photo-face" aria-hidden="true">
-                <img src={assetPath(review.image || "/photos/review-sample-cozy.webp")} alt="" />
-                <span>{review.title}</span>
-              </div>
+        {hasPublicReviews ? (
+          <div className="review-cards" aria-label="Customer reviews">
+            {activeReviews.map((review, index) => (
+              <article className="review-card-rotator" key={`${review.title}-${index}`}>
+                <div className="review-card-face review-text-face">
+                  <h3>{review.title}</h3>
+                  <p>&ldquo;{review.body}&rdquo;</p>
+                </div>
+                <div className="review-card-face review-photo-face" aria-hidden="true">
+                  <img src={assetPath(review.image || "/photos/review-sample-cozy.webp")} alt="" />
+                  <span>{review.title}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="review-coming-soon" aria-label="Reviews coming soon">
+            <div>
+              <img src={assetPath("/photos/review-sample-cozy.webp")} alt="" />
+              <img src={assetPath("/photos/review-sample-orders.webp")} alt="" />
+            </div>
+            <article>
+              <span>Coming Soon</span>
+              <h3>Customer stories are being gathered</h3>
+              <p>Real guest reviews and cafe moments will be shared here once approved by the client.</p>
             </article>
-          ))}
-        </div>
+          </div>
+        )}
       </section>
-      )}
 
       <section id="contact" className="info-section">
         <article>

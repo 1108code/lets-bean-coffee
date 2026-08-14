@@ -802,6 +802,61 @@ h2 {
   margin: 0;
 }
 
+.review-coming-soon {
+  align-items: stretch;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(180px, 0.85fr) minmax(220px, 1fr);
+}
+
+.review-coming-soon > div {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  min-height: 250px;
+}
+
+.review-coming-soon img {
+  border-radius: 14px;
+  box-shadow: 0 18px 42px rgba(51, 29, 12, 0.12);
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.review-coming-soon article {
+  align-content: center;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(189, 139, 79, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 18px 42px rgba(51, 29, 12, 0.1);
+  display: grid;
+  padding: 28px;
+}
+
+.review-coming-soon span {
+  color: var(--caramel);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.review-coming-soon h3 {
+  color: var(--charcoal);
+  font-family: var(--font-libre-baskerville), Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.25;
+  margin: 12px 0 14px;
+}
+
+.review-coming-soon p {
+  color: #51463d;
+  line-height: 1.7;
+  margin: 0;
+}
+
 .info-section {
   background: #fbf7ef;
   border-top: 1px solid var(--line);

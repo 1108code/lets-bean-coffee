@@ -3,16 +3,17 @@
 Replace these exact files in your GitHub repository:
 
 1. app/page.tsx
+   - Restores public reviews section and adds subtle coming-soon state
    - Adds subtle footer credit line
 
-2. public/favicon.svg
-   - Replaces the generic blue browser tab icon with Let's Bean Coffee branding
+2. app/globals.css
+   - Styles reviews coming-soon state, CMS guide boxes, footer credit, and payment logo fixes
 
 3. app/cms/page.tsx
    - Adds per-section CMS quick guides/manual notes
 
-4. app/globals.css
-   - Styles CMS guide boxes, footer credit, and keeps payment logo fixes
+4. public/favicon.svg
+   - Replaces the generic blue browser tab icon with Let's Bean Coffee branding
 
 5. public/icons/bpi.svg
    - Crops the BPI logo canvas so the visible logo is larger
